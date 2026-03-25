@@ -100,7 +100,7 @@ export const PORTFOLIO_DATA = {
     {
       title: "Employee of the Month",
       description: "Awarded for outstanding performance and dedication to project delivery.",
-      date: "2023"
+      date: "2025"
     }
   ],
   socials: {

@@ -251,31 +251,20 @@ const Hero = () => {
         </motion.div>
 
         {/* Scrolling Skills Marquee */}
-        <div className="relative overflow-hidden border-t border-white/5 pt-10 -mx-6 md:-mx-12 w-screen">
+        <div className="relative overflow-hidden border-t border-white/5 pt-10 -mx-6 md:-mx-12 w-screen flex">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="flex"
+            className="flex whitespace-nowrap animate-marquee w-max"
           >
-            <motion.div
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                duration: 40,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              className="flex gap-16 md:gap-24 whitespace-nowrap pr-16 md:pr-24"
-            >
-              {[...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills].map((skill, i) => (
-                <span
-                  key={i}
-                  className="text-4xl md:text-7xl font-display font-bold tracking-tighter text-white/[0.05] hover:text-accent transition-colors duration-500 cursor-default uppercase"
-                >
+            {[...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills].map((skill, i) => (
+              <div key={i} className="flex items-center">
+                <span className="text-4xl md:text-7xl font-display font-bold tracking-tighter text-white/[0.05] hover:text-accent transition-colors duration-500 cursor-default uppercase pr-16 md:pr-24">
                   {skill}
                 </span>
-              ))}
-            </motion.div>
+              </div>
+            ))}
           </motion.div>
 
           {/* Gradient Fades for Marquee */}
@@ -307,8 +296,8 @@ const Hero = () => {
 
 const Marquee = () => {
   return (
-    <div className="py-20 border-y border-white/10 overflow-hidden bg-white/2 relative w-screen -mx-6 sm:-mx-8">
-      <div className="flex whitespace-nowrap animate-marquee">
+    <div className="py-20 border-y border-white/10 overflow-hidden bg-white/2 relative w-screen -mx-6 sm:-mx-8 flex">
+      <div className="flex whitespace-nowrap animate-marquee w-max">
         {[...Array(10)].map((_, i) => (
           <div key={i} className="flex items-center gap-12 px-6">
             <span className="text-6xl md:text-8xl font-display font-black text-white/10 uppercase tracking-tighter">
