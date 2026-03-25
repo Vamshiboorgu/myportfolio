@@ -18,6 +18,7 @@ import {
 import { useState, useEffect, useRef } from "react";
 import { PORTFOLIO_DATA } from "./constants";
 import { PageLoader } from "./PageLoader";
+import { Particles } from "./Particles";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -135,7 +136,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-40 pb-16 px-6 overflow-hidden bg-[#0A1118]">
+    <section className="relative min-h-screen flex flex-col justify-between pt-40 pb-16 px-6 overflow-hidden bg-ink">
       {/* Noise Texture Overlay */}
       <div className="absolute inset-0 noise z-50 pointer-events-none" />
 
@@ -151,9 +152,21 @@ const Hero = () => {
         </motion.span>
       </div>
 
-      {/* Central Ambient Glow (Replacing Image) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div className="w-[40vw] h-[40vw] bg-accent/10 rounded-full blur-[120px] animate-pulse" />
+      {/* Central Ambient Glow (Roaming Animation) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex justify-center items-center">
+        <motion.div
+          className="w-[50vw] h-[50vw] md:w-[40vw] md:h-[40vw] bg-accent/10 rounded-full blur-[120px]"
+          animate={{
+            x: ["-30vw", "30vw", "-10vw", "-30vw"],
+            y: ["-20vh", "20vh", "10vh", "-20vh"],
+            scale: [1, 1.2, 0.9, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-20 flex-1 flex flex-col justify-center px-4 md:px-6">
@@ -218,7 +231,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Scrolling Skills Marquee */}
-        <div className="relative overflow-hidden border-t border-white/5 pt-10">
+        <div className="relative overflow-hidden border-t border-white/5 pt-10 -mx-6 md:-mx-12 w-screen">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -226,18 +239,18 @@ const Hero = () => {
             className="flex"
           >
             <motion.div
-              animate={{ x: [0, -1000] }}
+              animate={{ x: ["0%", "-50%"] }}
               transition={{
-                duration: 30,
+                duration: 40,
                 repeat: Infinity,
                 ease: "linear"
               }}
-              className="flex gap-24 whitespace-nowrap pr-24"
+              className="flex gap-16 md:gap-24 whitespace-nowrap pr-16 md:pr-24"
             >
-              {[...expertiseSkills, ...expertiseSkills, ...expertiseSkills].map((skill, i) => (
+              {[...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills, ...expertiseSkills].map((skill, i) => (
                 <span
                   key={i}
-                  className="text-3xl md:text-6xl font-display font-bold tracking-tighter text-white/10 hover:text-accent transition-colors duration-500 cursor-default uppercase"
+                  className="text-4xl md:text-7xl font-display font-bold tracking-tighter text-white/[0.05] hover:text-accent transition-colors duration-500 cursor-default uppercase"
                 >
                   {skill}
                 </span>
@@ -246,14 +259,28 @@ const Hero = () => {
           </motion.div>
 
           {/* Gradient Fades for Marquee */}
-          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#0A1118] to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#0A1118] to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-ink to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-ink to-transparent z-10 pointer-events-none" />
         </div>
       </div>
 
-      {/* Background Accents */}
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
+      {/* Background Accents (Roaming) */}
+      <motion.div
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[180px] pointer-events-none"
+        animate={{
+          x: [0, -100, 0],
+          y: [0, -100, 0],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-0 left-0 w-[400px] h-[400px] bg-teal-500/5 rounded-full blur-[150px] pointer-events-none"
+        animate={{
+          x: [0, 80, 0],
+          y: [0, 100, 0],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
     </section>
   );
 };
@@ -330,29 +357,37 @@ const Work = () => {
                 key={project.id}
                 className="min-w-[280px] sm:min-w-[350px] md:min-w-[550px] flex-shrink-0"
               >
-                <div className="border border-white/10 p-10 md:p-14 h-full bg-black/40 backdrop-blur-sm hover:border-accent/30 transition-all duration-500 flex flex-col justify-between group/card relative overflow-hidden">
+                <div className="border border-white/[0.08] p-10 md:p-14 h-full bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.15)] hover:border-white/[0.15] hover:from-white/[0.05] transition-all duration-500 flex flex-col justify-between group/card relative overflow-hidden">
                   {/* Subtle Background Accent */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/card:bg-accent/10 transition-colors duration-700" />
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/card:bg-accent/20 group-hover/card:scale-150 transition-all duration-700" />
 
-                  <div>
-                    <div className="text-accent text-[10px] font-mono uppercase tracking-widest mb-8 flex items-center gap-4">
-                      <span className="w-8 h-px bg-accent/30" />
+                  {/* Bottom Glow Focus Line */}
+                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent scale-x-0 group-hover/card:scale-x-100 transition-transform duration-700 origin-left" />
+
+                  <div className="relative z-10">
+                    <div className="text-accent text-[10px] font-mono uppercase tracking-widest mb-8 flex items-center gap-4 group-hover/card:text-white transition-colors duration-500">
+                      <span className="w-8 h-px bg-accent/50 group-hover/card:w-16 group-hover/card:bg-white/80 transition-all duration-500" />
                       PROJECT {(i + 1).toString().padStart(2, '0')}
                     </div>
-                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold mb-8 uppercase tracking-tighter leading-none group-hover/card:text-accent transition-colors duration-500">
+                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold mb-8 uppercase tracking-tighter leading-none text-white drop-shadow-sm group-hover/card:text-transparent group-hover/card:bg-clip-text group-hover/card:bg-gradient-to-r group-hover/card:from-white group-hover/card:to-white/50 transition-all duration-500">
                       {project.title}
                     </h3>
-                    <p className="text-lg md:text-xl text-white/40 line-clamp-2 font-light leading-relaxed max-w-md">
+                    <p className="text-lg md:text-xl text-white/40 line-clamp-2 font-light leading-relaxed max-w-md group-hover/card:text-white/70 transition-colors duration-500">
                       {project.description}
                     </p>
                   </div>
 
-                  <div className="mt-16 flex flex-wrap gap-3">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-mono uppercase tracking-widest border border-white/10 px-3 py-1 opacity-40 group-hover/card:opacity-100 group-hover/card:border-accent/30 transition-all">
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="mt-16 flex items-end justify-between relative z-10">
+                    <div className="flex flex-wrap gap-3">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="text-[10px] font-mono uppercase tracking-widest border border-white/10 bg-white/5 px-3 py-1 opacity-50 group-hover/card:opacity-100 group-hover/card:border-white/20 group-hover/card:bg-white/10 transition-all duration-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center opacity-0 -translate-x-4 translate-y-4 group-hover/card:opacity-100 group-hover/card:translate-x-0 group-hover/card:translate-y-0 group-hover/card:bg-white group-hover/card:text-black group-hover/card:border-white transition-all duration-500 shrink-0">
+                      <ArrowUpRight className="w-5 h-5" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -385,53 +420,64 @@ const Work = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
           {/* Main Bio Card */}
-          <div className="md:col-span-4 md:row-span-2 border border-white/10 p-8 md:p-8 flex flex-col justify-between group relative overflow-hidden bg-black/40 backdrop-blur-sm">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/10 transition-colors duration-700" />
+          <div className="md:col-span-4 md:row-span-2 border border-white/[0.08] p-10 md:p-14 flex flex-col justify-between group relative overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.1)] hover:border-white/[0.15] hover:from-white/[0.05] transition-all duration-500">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 group-hover:bg-accent/15 group-hover:scale-110 transition-all duration-700" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-12">
-                <div className="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-                  <Command className="w-6 h-6 text-accent" />
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/5 transition-colors duration-500">
+                  <Command className="w-5 h-5 text-accent" fill="currentColor" />
                 </div>
-                <span className="text-technical opacity-50">/ ABOUT_ME</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest opacity-50 text-white group-hover:text-accent transition-colors duration-500">/ ABOUT_ME</span>
               </div>
-              <h3 className="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-8 leading-[0.9] uppercase">
-                Designing with <br /> <span className="text-white/20">Purpose</span> <br /> & Precision.
+              <h3 className="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-8 leading-[0.9] uppercase text-white drop-shadow-sm group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70 transition-all duration-500">
+                Designing with <br /> <span className="text-white/20 group-hover:text-accent/60 transition-colors duration-500">Purpose</span> <br /> & Precision.
               </h3>
-              <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl">
+              <p className="text-xl text-white/50 font-light leading-relaxed max-w-2xl group-hover:text-white/80 transition-colors duration-500">
                 {PORTFOLIO_DATA.bio}
               </p>
             </div>
 
-            <div className="mt-16 flex flex-wrap gap-8 md:gap-12 relative z-10 border-t border-white/5 pt-12">
-              <div className="flex flex-col gap-2">
-                <span className="text-technical opacity-40">PRECISION</span>
-                <div className="text-4xl font-display font-bold text-white">99%</div>
+            <div className="mt-16 flex flex-wrap gap-8 md:gap-16 relative z-10 pt-12">
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-white/10 to-transparent" />
+              <div className="flex flex-col gap-3 group/stat cursor-default">
+                <span className="text-[10px] font-mono tracking-widest text-white/40 group-hover/stat:text-accent transition-colors">PRECISION</span>
+                <div className="text-5xl font-display font-bold text-white group-hover/stat:text-transparent group-hover/stat:bg-clip-text group-hover/stat:bg-gradient-to-r group-hover/stat:from-accent group-hover/stat:to-white transition-all duration-300">99%</div>
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-technical opacity-40">DEDICATION</span>
-                <div className="text-4xl font-display font-bold text-white">24/7</div>
+              <div className="flex flex-col gap-3 group/stat cursor-default">
+                <span className="text-[10px] font-mono tracking-widest text-white/40 group-hover/stat:text-accent transition-colors">DEDICATION</span>
+                <div className="text-5xl font-display font-bold text-white group-hover/stat:text-transparent group-hover/stat:bg-clip-text group-hover/stat:bg-gradient-to-r group-hover/stat:from-accent group-hover/stat:to-white transition-all duration-300">24/7</div>
               </div>
             </div>
           </div>
 
           {/* Experience Card */}
-          <div className="md:col-span-2 border border-white/10 p-10 flex flex-col justify-center items-center text-center group bg-black/40 backdrop-blur-sm relative">
-            <div className="absolute top-4 left-4 text-technical opacity-20">EXPERIENCE</div>
-            <div className="text-8xl font-display font-bold text-accent mb-2 group-hover:scale-110 transition-transform">
-              {PORTFOLIO_DATA.experience.split(' ')[0]}
+          <div className="md:col-span-2 border border-white/[0.08] p-10 flex flex-col justify-center items-center text-center group bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-1 hover:border-white/[0.15] hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.1)] transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+            <div className="absolute top-6 left-6 text-[10px] font-mono tracking-widest text-white/30 group-hover:text-accent transition-colors">EXPERIENCE</div>
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="text-8xl md:text-9xl font-display font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 group-hover:from-accent group-hover:to-accent/40 mb-4 group-hover:scale-110 transition-all duration-500 drop-shadow-lg">
+                {PORTFOLIO_DATA.experience.split(' ')[0]}
+              </div>
+              <div className="text-[10px] font-mono uppercase tracking-widest text-white/40 group-hover:text-white/80 transition-colors">Years of Experience</div>
             </div>
-            <div className="text-technical opacity-40">Years of Experience</div>
           </div>
 
           {/* Location Card */}
-          <div className="md:col-span-2 border border-white/10 p-10 flex flex-col justify-center items-center text-center group bg-black/40 backdrop-blur-sm relative">
-            <div className="absolute top-4 left-4 text-technical opacity-20">LOCATION</div>
-            <div className="w-14 h-14 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-              <Globe className="w-7 h-7 text-accent" />
+          <div className="md:col-span-2 border border-white/[0.08] p-10 flex flex-col justify-center items-center text-center group bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-1 hover:border-white/[0.15] hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.1)] transition-all duration-500 relative overflow-hidden">
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+            <div className="absolute top-6 left-6 text-[10px] font-mono tracking-widest text-white/30 group-hover:text-accent transition-colors">LOCATION</div>
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-8 bg-white/5 group-hover:bg-accent group-hover:border-accent transition-all duration-500 shadow-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <Globe className="w-8 h-8 text-accent group-hover:text-black relative z-10 transition-colors duration-500" fill="currentColor" />
+              </div>
+              <div className="text-3xl font-display font-bold mb-3 uppercase tracking-tight text-white group-hover:text-accent transition-colors">{PORTFOLIO_DATA.location.split(',')[0]}</div>
+              <div className="text-[10px] font-mono uppercase tracking-widest text-white/40 group-hover:text-white/80 transition-colors">Based In</div>
             </div>
-            <div className="text-2xl font-display font-bold mb-1 uppercase tracking-tight">{PORTFOLIO_DATA.location.split(',')[0]}</div>
-            <div className="text-technical opacity-40">Based In</div>
           </div>
 
           {/* Skills Section - Redesigned for better visibility */}
@@ -442,21 +488,23 @@ const Work = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group border border-white/10 p-10 bg-black/40 backdrop-blur-sm hover:border-accent/30 transition-all duration-500 relative overflow-hidden"
+                className="group border border-white/[0.08] p-10 bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-1 hover:border-white/[0.15] hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.1)] transition-all duration-500 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/10 transition-colors duration-700" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/15 group-hover:scale-150 transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-10">
-                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                      <Layout className="w-5 h-5 text-accent" />
+                    <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <Layout className="w-5 h-5 text-accent group-hover:text-black relative z-10 transition-colors duration-500" fill="currentColor" />
                     </div>
-                    <h4 className="text-xl font-display font-bold uppercase tracking-tight">Design Tools</h4>
+                    <h4 className="text-xl font-display font-bold uppercase tracking-tight group-hover:text-accent transition-colors duration-500">Design Tools</h4>
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {PORTFOLIO_DATA.skills.design.map(skill => (
                       <span
                         key={skill}
-                        className="px-4 py-2 bg-white/5 border border-white/5 text-[11px] font-mono uppercase tracking-widest text-white/60 hover:text-accent hover:border-accent/30 transition-all cursor-default"
+                        className="px-4 py-2 bg-black/50 border border-white/5 text-[11px] font-mono uppercase tracking-widest text-white/60 group-hover:border-white/20 group-hover:text-white transition-all cursor-default"
                       >
                         {skill}
                       </span>
@@ -471,21 +519,23 @@ const Work = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="group border border-white/10 p-10 bg-black/40 backdrop-blur-sm hover:border-accent/30 transition-all duration-500 relative overflow-hidden"
+                className="group border border-white/[0.08] p-10 bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-1 hover:border-white/[0.15] hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.1)] transition-all duration-500 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/10 transition-colors duration-700" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/15 group-hover:scale-150 transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-10">
-                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                      <Zap className="w-5 h-5 text-accent" />
+                    <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <Zap className="w-5 h-5 text-accent group-hover:text-black relative z-10 transition-colors duration-500" fill="currentColor" />
                     </div>
-                    <h4 className="text-xl font-display font-bold uppercase tracking-tight">Technical Stack</h4>
+                    <h4 className="text-xl font-display font-bold uppercase tracking-tight group-hover:text-accent transition-colors duration-500">Technical Stack</h4>
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {PORTFOLIO_DATA.skills.technical.map(skill => (
                       <span
                         key={skill}
-                        className="px-4 py-2 bg-white/5 border border-white/5 text-[11px] font-mono uppercase tracking-widest text-white/60 hover:text-accent hover:border-accent/30 transition-all cursor-default"
+                        className="px-4 py-2 bg-black/50 border border-white/5 text-[11px] font-mono uppercase tracking-widest text-white/60 group-hover:border-white/20 group-hover:text-white transition-all cursor-default"
                       >
                         {skill}
                       </span>
@@ -500,21 +550,23 @@ const Work = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="group border border-white/10 p-10 bg-black/40 backdrop-blur-sm hover:border-accent/30 transition-all duration-500 relative overflow-hidden"
+                className="group border border-white/[0.08] p-10 bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-1 hover:border-white/[0.15] hover:shadow-[0_20px_40px_-20px_rgba(0,174,239,0.1)] transition-all duration-500 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/10 transition-colors duration-700" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/15 group-hover:scale-150 transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-10">
-                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                      <Sparkles className="w-5 h-5 text-accent" />
+                    <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <Sparkles className="w-5 h-5 text-accent group-hover:text-black relative z-10 transition-colors duration-500" fill="currentColor" />
                     </div>
-                    <h4 className="text-xl font-display font-bold uppercase tracking-tight">Design Arsenal</h4>
+                    <h4 className="text-xl font-display font-bold uppercase tracking-tight group-hover:text-accent transition-colors duration-500">Design Arsenal</h4>
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {PORTFOLIO_DATA.skills.tools.map(tool => (
                       <span
                         key={tool}
-                        className="px-4 py-2 bg-white/5 border border-white/5 text-[11px] font-mono uppercase tracking-widest text-white/60 hover:text-accent hover:border-accent/30 transition-all cursor-default"
+                        className="px-4 py-2 bg-black/50 border border-white/5 text-[11px] font-mono uppercase tracking-widest text-white/60 group-hover:border-white/20 group-hover:text-white transition-all cursor-default"
                       >
                         {tool}
                       </span>
@@ -604,7 +656,7 @@ const Education = () => {
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-10">
                   <div className="w-14 h-14 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-all duration-500">
-                    <Sparkles className="w-6 h-6" />
+                    <Sparkles className="w-6 h-6" fill="currentColor" />
                   </div>
                   <span className="text-technical opacity-40">{edu.period}</span>
                 </div>
@@ -645,7 +697,7 @@ const Awards = () => {
               }}
             >
               <div className="w-24 h-24 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-all duration-700 shrink-0">
-                <Trophy className="w-12 h-12" />
+                <Trophy className="w-12 h-12" fill="currentColor" />
               </div>
               <div className="text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
@@ -668,7 +720,7 @@ const Awards = () => {
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-40 px-6 bg-[#0A1118] relative overflow-hidden">
+    <section id="contact" className="py-40 px-6 bg-ink relative overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -714,7 +766,7 @@ const Contact = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 border-t border-white/5 bg-[#0A1118]">
+    <footer className="py-12 px-6 border-t border-white/5 bg-ink">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 opacity-40 text-[10px] font-mono uppercase tracking-widest">
         <span>© {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved.</span>
         <div className="flex flex-wrap gap-4 md:gap-8">
@@ -777,6 +829,14 @@ const CustomCursor = () => {
   return (
     <>
       <motion.div
+        className="fixed top-0 left-0 w-[600px] h-[600px] bg-accent/[0.04] rounded-full pointer-events-none z-0 blur-[120px]"
+        animate={{
+          x: mousePosition.x - 300,
+          y: mousePosition.y - 300,
+        }}
+        transition={{ type: 'tween', ease: 'easeOut', duration: 0.5 }}
+      />
+      <motion.div
         className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
         animate={{
           x: mousePosition.x - 6,
@@ -809,7 +869,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="font-sans selection:bg-accent/30 selection:text-accent bg-[#0A1118] text-white scroll-smooth relative">
+    <div className="font-sans selection:bg-accent/30 selection:text-accent bg-ink text-white scroll-smooth relative">
+      <Particles />
       <PageLoader isLoading={isLoading} />
       <CustomCursor />
       <div className="noise" />

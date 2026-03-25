@@ -3,16 +3,16 @@ import { motion, AnimatePresence } from "motion/react";
 const pulse = "animate-pulse rounded-sm";
 
 const Skeleton = () => (
-  <div className="fixed inset-0 z-[9999] bg-[#0A1118] flex flex-col overflow-hidden">
+  <div className="fixed inset-0 z-[9999] bg-ink flex flex-col overflow-hidden">
 
     {/* ── Navbar ── */}
     <div className="flex justify-between items-center px-6 py-8">
       {/* VB Logo + wordmark */}
       <div className="flex items-center gap-3">
-        <div className={`w-10 h-10 border border-[#00AEEF]/30 ${pulse}`} />
+        <div className={`w-10 h-10 border border-accent/30 ${pulse}`} />
         <div className="hidden sm:flex flex-col gap-1.5">
           <div className={`w-20 h-2.5 bg-white/10 ${pulse}`} />
-          <div className={`w-14 h-2 bg-[#00AEEF]/15 ${pulse}`} />
+          <div className={`w-14 h-2 bg-accent/15 ${pulse}`} />
         </div>
       </div>
       {/* Nav links */}
@@ -32,7 +32,7 @@ const Skeleton = () => (
         {/* Left: badge + name */}
         <div className="flex flex-col">
           {/* Badge */}
-          <div className={`w-52 h-2.5 bg-[#00AEEF]/20 mb-6 ${pulse}`} />
+          <div className={`w-52 h-2.5 bg-accent/20 mb-6 ${pulse}`} />
           {/* Big name line 1 */}
           <div className={`w-[85%] h-16 sm:h-20 md:h-24 lg:h-28 bg-white/8 mb-3 ${pulse}`} />
           {/* Big name line 2 — ghosted */}
