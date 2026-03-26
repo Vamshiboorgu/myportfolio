@@ -1,11 +1,11 @@
 export const PORTFOLIO_DATA = {
   name: "Vamshi Boorgu",
   role: "UI/UX Developer & Designer",
-  experience: "3.2 Years",
+  experience: "3.5 Years",
   location: "Hyderabad, Telangana",
   email: "vamshiboorgu74@gmail.com",
   phone: "6301437366",
-  bio: "UI/UX Designer with 3.2 years of experience in building responsive websites and intuitive digital interfaces. Skilled in HTML, CSS, Bootstrap, and Figma, with a strong understanding of layout structure, visual hierarchy, and user-centered design. Adept at transforming concepts into clean, functional, and visually consistent web experiences.",
+  bio: "UI/UX Designer with 3.5 years of experience in building responsive websites and intuitive digital interfaces. Skilled in HTML, CSS, Bootstrap, and Figma, with a strong understanding of layout structure, visual hierarchy, and user-centered design. Adept at transforming concepts into clean, functional, and visually consistent web experiences.",
   skills: {
     design: ["UI Design", "UX Research", "Figma", "Adobe XD", "Photoshop", "Illustrator", "Wireframing", "Invision"],
     tools: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Gitlab", "Eclipse"],

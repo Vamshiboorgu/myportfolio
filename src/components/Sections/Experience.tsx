@@ -9,10 +9,10 @@ export const Experience = () => {
       <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
 
       <div className="max-w-5xl mx-auto">
-        <SectionHeader 
-          technical="CAREER_PATH" 
-          title="The" 
-          subtitle="Journey" 
+        <SectionHeader
+          technical="CAREER_PATH"
+          title="The"
+          subtitle="Journey"
           className="mb-16 md:mb-24"
         />
 

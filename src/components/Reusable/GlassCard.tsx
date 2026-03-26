@@ -34,7 +34,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       {showGlow && (
         <div className={`absolute top-0 right-0 w-48 h-48 ${glowColor}/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-all duration-700`} />
       )}
-      
+
       {showLine && (
         <div className={`absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left`} />
       )}

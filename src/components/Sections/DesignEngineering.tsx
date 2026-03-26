@@ -29,17 +29,17 @@ export const DesignEngineering = () => {
     <section id="engineering" className="py-20 md:py-32 px-6 grid-lines relative overflow-hidden bg-white/[0.01]">
       <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
       <div className="max-w-7xl mx-auto">
-        <SectionHeader 
-          technical="DESIGN_ENGINEERING" 
-          title="The" 
-          subtitle="Hybrid Advantage" 
+        <SectionHeader
+          technical="DESIGN_ENGINEERING"
+          title="The"
+          subtitle="Hybrid Advantage"
           className="mb-16 md:mb-24"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10">
           {features.map((feature, i) => (
             <GlassCard key={i} delay={i * 0.1} showGlow={false} showLine={true} className="p-10 bg-black/40 backdrop-blur-sm">
-               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="flex justify-between items-start mb-8">
                 <div className="w-16 h-16 border border-white/10 flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-500 rounded-2xl bg-white/5">
                   {feature.icon}

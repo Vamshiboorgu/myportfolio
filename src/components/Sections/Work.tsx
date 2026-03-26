@@ -14,7 +14,7 @@ const ProjectContent = ({ project, i }: { project: any, i: number }) => (
         <span className="w-6 sm:w-8 h-px bg-accent/50 group-hover/card:w-16 group-hover/card:bg-white/80 transition-all duration-500" />
         PROJECT {(i + 1).toString().padStart(2, '0')}
       </div>
-      <h3 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold mb-4 sm:mb-8 uppercase tracking-tighter leading-none text-white drop-shadow-sm group-hover/card:text-transparent group-hover/card:bg-clip-text group-hover/card:bg-gradient-to-r group-hover/card:from-accent group-hover/card:to-accent/50 transition-all duration-500">
+      <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6 uppercase tracking-tighter leading-tight text-white drop-shadow-sm group-hover/card:text-transparent group-hover/card:bg-clip-text group-hover/card:bg-gradient-to-r group-hover/card:from-accent group-hover/card:to-accent/50 transition-all duration-500">
         {project.title}
       </h3>
       <p className="text-sm sm:text-lg md:text-xl text-white/40 line-clamp-3 md:line-clamp-2 font-light leading-relaxed max-w-md group-hover/card:text-white/70 transition-colors duration-500">
@@ -72,8 +72,8 @@ export const Work = () => {
           <div className="flex items-center">
             <motion.div style={{ x, paddingLeft: 'calc((100vw - min(100vw, 80rem)) / 2 + 1.5rem)' }} className="flex gap-8">
               {currentCompanyProjects.map((project, i) => (
-                <div key={project.id} className="min-w-[550px] flex-shrink-0">
-                  <div className="border border-white/[0.08] p-14 h-[450px] bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(0,229,153,0.15)] hover:border-white/[0.15] hover:from-white/[0.05] transition-all duration-500 flex flex-col justify-between group/card relative overflow-hidden">
+                <div key={project.id} className="min-w-[450px] md:min-w-[550px] flex-shrink-0">
+                  <div className="border border-white/[0.08] p-8 sm:p-10 md:p-14 min-h-[400px] md:min-h-[480px] bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(0,229,153,0.15)] hover:border-white/[0.15] hover:from-white/[0.05] transition-all duration-500 flex flex-col justify-between group/card relative overflow-hidden">
                     <ProjectContent project={project} i={i} />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export const Work = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.1 }}
-              className="sticky border border-white/10 p-6 sm:p-10 min-h-[50vh] flex flex-col justify-between bg-ink/95 backdrop-blur-2xl shadow-2xl group/card overflow-hidden rounded-2xl"
+              className="sticky border border-white/10 p-8 sm:p-10 min-h-[40vh] md:min-h-[50vh] flex flex-col justify-between bg-ink/95 backdrop-blur-2xl shadow-2xl group/card overflow-hidden rounded-2xl"
               style={{ top: `calc(${15 + i * 2}vh)` }}
             >
               <ProjectContent project={project} i={i} />
