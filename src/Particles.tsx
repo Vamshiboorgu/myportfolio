@@ -1,12 +1,21 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+}
+
 export const Particles = () => {
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
     // Generate lovely drifting particles
-    const newParticles = Array.from({ length: 40 }).map((_, i) => ({
+    const newParticles: Particle[] = Array.from({ length: 40 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100, // percentage
       y: Math.random() * 100, // percentage
