@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "../../constants";
 import { SectionHeader } from "../Reusable/SectionHeader";
 
@@ -30,17 +29,14 @@ export const Experience = () => {
 
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
                 <div className="flex gap-8 items-center">
-                  <div className="text-technical opacity-20 text-2xl font-bold">0{i + 1}</div>
+                  <div className="font-mono text-2xl font-bold text-white/50">0{i + 1}</div>
                   <div>
                     <h4 className="text-3xl font-display font-bold mb-2 tracking-tight uppercase">{exp.role}</h4>
-                    <div className="text-technical text-accent">{exp.company}</div>
+                    <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent">{exp.company}</div>
                   </div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <span className="text-technical opacity-40 mb-3">{exp.period}</span>
-                  <div className="w-12 h-12 border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:bg-white group-hover:text-black">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
+                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-white/60 mb-3">{exp.period}</span>
                 </div>
               </div>
               <p className="mt-10 text-white/60 text-lg leading-relaxed font-light max-w-3xl border-t border-white/5 pt-10">

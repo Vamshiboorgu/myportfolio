@@ -39,8 +39,6 @@ export const Contact = () => {
 
         <div className="mt-20 md:mt-32 flex flex-wrap justify-center gap-6 md:gap-12 text-[10px] font-mono uppercase tracking-widest">
           <a href={PORTFOLIO_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#0A66C2] hover:opacity-100 transition-all">LINKEDIN</a>
-          <a href={PORTFOLIO_DATA.socials.dribbble} className="text-white/40 hover:text-[#EA4C89] hover:opacity-100 transition-all">DRIBBBLE</a>
-          <a href={PORTFOLIO_DATA.socials.behance} className="text-white/40 hover:text-[#1769ff] hover:opacity-100 transition-all">BEHANCE</a>
         </div>
       </div>
     </section>

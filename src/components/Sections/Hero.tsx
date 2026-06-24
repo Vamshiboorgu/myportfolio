@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import { Download, Linkedin, Github } from "lucide-react";
+import { Download, Linkedin } from "lucide-react";
 import { PORTFOLIO_DATA } from "../../constants";
 import { GenericMarquee } from "../Reusable/GenericMarquee";
 
@@ -111,14 +111,6 @@ export const Hero = () => {
           >
             <Linkedin className="w-5 h-5" fill="currentColor" />
           </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.2, color: "#fafafa", opacity: 1 }}
-            href="#"
-            className="transition-all"
-            aria-label="GitHub Profile"
-          >
-            <Github className="w-5 h-5" fill="currentColor" />
-          </motion.a>
         </motion.div>
 
         <div className="relative border-t border-white/5 pt-10 -mx-6 md:-mx-12">
@@ -128,7 +120,7 @@ export const Hero = () => {
 
       {/* Background Accents */}
       <motion.div
-        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[180px] pointer-events-none"
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[180px] pointer-events-none"
         animate={{ x: [0, -100, 0], y: [0, -100, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
