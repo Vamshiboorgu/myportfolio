@@ -80,7 +80,8 @@ export const Hero = () => {
               I use a design thinking approach rooted in user research, rapid prototyping, and testing - helping me uncover insights early and create intuitive, impactful solutions.
             </p>
             <motion.a
-              href="#"
+              href="/VamshiBoorgu.docx"
+              download="VamshiBoorgu.docx"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-accent text-black font-mono font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white transition-colors duration-300 hover:shadow-[0_0_30px_rgba(0,229,153,0.4)]"
