@@ -95,7 +95,7 @@ export const BentoSkills = () => {
               </div>
               <div className="flex flex-wrap gap-2 px-2">
                 {PORTFOLIO_DATA.skills.design.slice(0, 7).map(skill => (
-                  <span key={skill} className="px-3 py-1 text-[10px] font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
+                  <span key={skill} className="px-4 py-2 text-xs md:text-sm font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
                     {skill}
                   </span>
                 ))}
@@ -112,7 +112,7 @@ export const BentoSkills = () => {
               </div>
               <div className="flex flex-wrap gap-2 px-2">
                 {PORTFOLIO_DATA.skills.technical.map(skill => (
-                  <span key={skill} className="px-3 py-1 text-[10px] font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
+                  <span key={skill} className="px-4 py-2 text-xs md:text-sm font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
                     {skill}
                   </span>
                 ))}
@@ -122,14 +122,14 @@ export const BentoSkills = () => {
 
           {/* Core Arsenal / Tools - Span 12 */}
           <div className="md:col-span-12">
-            <GlassCard delay={0.4} className="flex flex-col md:flex-row justify-between items-center gap-12">
-              <div className="flex items-center gap-4 px-2">
+            <GlassCard delay={0.4} className="flex flex-col">
+              <div className="flex items-center gap-4 mb-10 px-2">
                 <Sparkles className="w-5 h-5 text-accent" />
                 <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80 shrink-0">Core Arsenal</h4>
               </div>
-              <div className="flex flex-wrap gap-x-6 gap-y-4 justify-center md:justify-end flex-1">
+              <div className="flex flex-wrap gap-x-6 gap-y-4 px-2">
                 {PORTFOLIO_DATA.skills.tools.map(tool => (
-                  <span key={tool} className="text-xs font-mono text-white/30 hover:text-white transition-colors cursor-default border-b border-white/5 pb-1">
+                  <span key={tool} className="text-sm md:text-base font-mono text-white/30 hover:text-white transition-colors cursor-default border-b border-white/5 pb-1">
                     {tool}
                   </span>
                 ))}

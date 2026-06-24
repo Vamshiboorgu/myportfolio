@@ -5,7 +5,7 @@ export const PORTFOLIO_DATA = {
   location: "Hyderabad, Telangana",
   email: "vamshiboorgu74@gmail.com",
   phone: "6301437366",
-  bio: "UI/UX Designer with 3.7 years of experience in building responsive websites and intuitive digital interfaces. Skilled in HTML, CSS, Bootstrap, and Figma, with a strong understanding of layout structure, visual hierarchy, and user-centered design. Adept at transforming concepts into clean, functional, and visually consistent web experiences.",
+  bio: "UI/UX Designer and Front-End Developer with 3.7 years of experience in building responsive websites, React applications, and intuitive digital interfaces. Skilled in React, front-end UI coding, HTML, CSS, Bootstrap, and Figma, with a strong understanding of layout structure, visual hierarchy, and user-centered design. Adept at transforming concepts into clean, functional, and visually consistent web experiences.",
   skills: {
     design: ["UI Design", "UX Research", "Figma", "Adobe XD", "Photoshop", "Illustrator", "Wireframing", "Invision"],
     tools: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Gitlab", "Eclipse"],
