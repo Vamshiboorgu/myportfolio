@@ -8,7 +8,7 @@ export const PORTFOLIO_DATA = {
   bio: "UI/UX Designer and Front-End Developer with 3.7 years of experience in building responsive websites, React applications, and intuitive digital interfaces. Skilled in React, front-end UI coding, HTML, CSS, Bootstrap, and Figma, with a strong understanding of layout structure, visual hierarchy, and user-centered design. Adept at transforming concepts into clean, functional, and visually consistent web experiences.",
   skills: {
     design: ["UI Design", "UX Research", "Figma", "Adobe XD", "Photoshop", "Illustrator", "Wireframing", "Invision"],
-    tools: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Gitlab", "Eclipse"],
+    tools: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Canva", "Gitlab", "Eclipse"],
     technical: ["HTML5", "CSS3", "Bootstrap", "JavaScript (Basics)", "Angular", "React", "Ionic"]
   },
   projects: [
@@ -75,6 +75,64 @@ export const PORTFOLIO_DATA = {
       tags: ["Figma", "UI/UX", "FinTech"],
       link: "#"
     }
+  ],
+  personalProjects: [
+    {
+      id: 1,
+      title: "FinDash",
+      category: "Personal Finance",
+      description: "A clean, minimalist personal finance dashboard to track expenses and investments visually.",
+      image: "https://picsum.photos/seed/findash/1200/800",
+      tags: ["UX Design", "Figma", "Data Viz"],
+      link: "#",
+      caseStudy: {
+        overview: "FinDash was a conceptual project aimed at solving the clutter often found in financial tracking apps. The goal was to make daily finance tracking an aesthetically pleasing experience.",
+        problem: "Users are often overwhelmed by complex financial jargon, dense tables, and stressful red/green numbers when they just want a quick overview of their financial health.",
+        solution: "I designed a dashboard that uses soft gradients, calm typography, and large visual summaries. Instead of tables, it relies heavily on intuitive charts and a conversational 'daily insights' widget.",
+        features: ["Conversational Insights Widget", "Soft-Gradient Data Visualization", "One-Tap Expense Entry", "Custom Category Icons"],
+        images: ["https://picsum.photos/seed/findash1/800/600", "https://picsum.photos/seed/findash2/800/600", "https://picsum.photos/seed/findash3/800/600"]
+      }
+    },
+    {
+      id: 2,
+      title: "Lumina",
+      category: "Smart Home App",
+      description: "An intuitive UI for controlling smart home devices with a focus on quick actions and mood lighting.",
+      image: "https://picsum.photos/seed/lumina/1200/800",
+      tags: ["UI/UX", "Mobile App", "Prototyping"],
+      link: "#",
+      caseStudy: {
+        overview: "Lumina is a mobile app concept for centralized smart home management, focused specifically on lighting and climate control.",
+        problem: "Most smart home apps force users to navigate through multiple rooms and nested menus just to turn off a light. The interactions feel rigid.",
+        solution: "I introduced a 'Mood Ring' interface on the home screen where users can drag their finger to instantly adjust the house temperature or global lighting hue, reducing time-on-task by 60%.",
+        features: ["Gestural 'Mood Ring' Controller", "Quick Room Toggles", "Automated Routine Presets", "Dark/Light Mode Adaptation"],
+        images: ["https://picsum.photos/seed/lumina1/800/600", "https://picsum.photos/seed/lumina2/800/600", "https://picsum.photos/seed/lumina3/800/600"]
+      }
+    },
+    {
+      id: 3,
+      title: "Echo",
+      category: "Voice Assistant App",
+      description: "A highly conversational AI voice assistant mobile interface with predictive text and generative sound waves.",
+      image: "https://picsum.photos/seed/echo/1200/800",
+      tags: ["Voice UI", "AI", "Mobile"],
+      link: "#",
+      caseStudy: {
+        overview: "Echo is a concept for an AI voice assistant that bridges the gap between text-based chat and purely voice-based interaction.",
+        problem: "Users often experience 'blank canvas syndrome' with voice assistants, not knowing what commands are available or feeling awkward speaking to a blank screen.",
+        solution: "I designed an interface that uses dynamic generative sound waves to indicate listening state, accompanied by predictive text suggestions that fade in seamlessly based on context.",
+        features: ["Dynamic Generative Sound Waves", "Contextual Predictive Prompts", "Seamless Voice-to-Text Handoff", "Minimalist Chat History"],
+        images: ["https://picsum.photos/seed/echo1/800/600", "https://picsum.photos/seed/echo2/800/600", "https://picsum.photos/seed/echo3/800/600"]
+      }
+    }
+  ],
+  graphicDesigns: [
+    { id: 1, title: "Nexus Logo", image: "https://picsum.photos/seed/gd1/800/800" },
+    { id: 2, title: "Aura Branding", image: "https://picsum.photos/seed/gd2/800/1200" },
+    { id: 3, title: "Vertex Tech", image: "https://picsum.photos/seed/gd3/800/600" },
+    { id: 4, title: "Echo Rebrand", image: "https://picsum.photos/seed/gd4/800/1000" },
+    { id: 5, title: "Nova App Icon", image: "https://picsum.photos/seed/gd5/800/800" },
+    { id: 6, title: "Lumina Guidelines", image: "https://picsum.photos/seed/gd6/800/1200" }
   ],
   experience_timeline: [
     {

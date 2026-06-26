@@ -12,6 +12,8 @@ import { CustomCursor } from "./components/Common/CustomCursor";
 // Sections
 import { Hero } from "./components/Sections/Hero";
 import { Work } from "./components/Sections/Work";
+import { PersonalProjects } from "./components/Sections/PersonalProjects";
+import { GraphicDesign } from "./components/Sections/GraphicDesign";
 import { BentoSkills } from "./components/Sections/BentoSkills";
 import { DesignEngineering } from "./components/Sections/DesignEngineering";
 import { Experience } from "./components/Sections/Experience";
@@ -42,8 +44,10 @@ export default function App() {
         <Hero />
         <Work />
         <BentoSkills />
-        <DesignEngineering />
         <Experience />
+        <PersonalProjects />
+        <GraphicDesign />
+        <DesignEngineering />
         <Education />
         <Awards />
         <Contact />

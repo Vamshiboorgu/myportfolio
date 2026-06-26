@@ -5,7 +5,7 @@ import { GlassCard } from "../Reusable/GlassCard";
 
 export const BentoSkills = () => {
   return (
-    <section id="about" className="py-24 md:py-40 px-6 relative overflow-hidden bg-ink">
+    <section id="expertise" className="py-24 md:py-40 px-6 relative overflow-hidden bg-ink">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       
