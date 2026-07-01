@@ -126,13 +126,44 @@ export const PORTFOLIO_DATA = {
       }
     }
   ],
-  graphicDesigns: [
-    { id: 1, title: "Nexus Logo", image: "https://picsum.photos/seed/gd1/800/800" },
-    { id: 2, title: "Aura Branding", image: "https://picsum.photos/seed/gd2/800/1200" },
-    { id: 3, title: "Vertex Tech", image: "https://picsum.photos/seed/gd3/800/600" },
-    { id: 4, title: "Echo Rebrand", image: "https://picsum.photos/seed/gd4/800/1000" },
-    { id: 5, title: "Nova App Icon", image: "https://picsum.photos/seed/gd5/800/800" },
-    { id: 6, title: "Lumina Guidelines", image: "https://picsum.photos/seed/gd6/800/1200" }
+  graphicDesignGroups: [
+    {
+      groupName: "Illustrator Works",
+      designs: [
+        { id: 1, title: "AI Concept 1", image: "/works/ai-1.jpg" },
+        { id: 2, title: "AI Concept 2", image: "/works/ai-2.jpg" },
+        { id: 3, title: "AI Concept 3", image: "/works/ai-3.jpg" },
+        { id: 10, title: "Portfolio Work 3", image: "/works/my works_page-0037.jpg" },
+        { id: 6, title: "Inco", image: "/works/inco.jpg" },
+        { id: 7, title: "Inco Alternative", image: "/works/inco-2.jpg" },
+        { id: 11, title: "Pent 1", image: "/works/pent-1.jpg" },
+        { id: 12, title: "Pent 2", image: "/works/pent-2.jpg" },
+        { id: 13, title: "Pent 3", image: "/works/pent-3.jpg" },
+        { id: 14, title: "Pent 4", image: "/works/pent-4.jpg" },
+        { id: 15, title: "Pent 5", image: "/works/pent-5.jpg" },
+        { id: 16, title: "Pent 6", image: "/works/pent-6.jpg" },
+      ]
+    },
+    {
+      groupName: "Photoshop Works",
+      designs: [
+        { id: 17, title: "Photoshop 1", image: "/works/ps-1.jpg" },
+        { id: 18, title: "Photoshop 2", image: "/works/ps-2.jpg" },
+        { id: 19, title: "Photoshop 3", image: "/works/ps-3.jpg" },
+        { id: 20, title: "Photoshop 4", image: "/works/ps-4.jpg" },
+        { id: 21, title: "Photoshop 5", image: "/works/ps-5.jpg" },
+      ]
+    },
+    {
+      groupName: "Logo Design",
+      designs: [
+        { id: 4, title: "B Fox", image: "/works/b-fox.jpg" },
+        { id: 5, title: "B Fox Alternative", image: "/works/b-fox-2.jpg" },
+        { id: 8, title: "Portfolio Work 1", image: "/works/my works_page-0001.jpg" },
+        { id: 9, title: "Portfolio Work 2", image: "/works/my works_page-0003.jpg" },
+        { id: 22, title: "Sha", image: "/works/sha.jpg" }
+      ]
+    }
   ],
   experience_timeline: [
     {

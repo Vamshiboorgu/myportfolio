@@ -25,7 +25,7 @@ export const BentoSkills = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-6xl sm:text-7xl md:text-8xl font-display font-bold tracking-tighter uppercase leading-[0.85] text-white"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter uppercase leading-[0.85] text-white"
             >
               Designing <br />
               with <span className="text-accent underline decoration-white/10 underline-offset-8">Purpose</span> <br />
@@ -50,19 +50,19 @@ export const BentoSkills = () => {
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                   {PORTFOLIO_DATA.experience.split(' ')[0]}
                 </div>
-                <div className="text-technical mt-2 opacity-40 group-hover:opacity-100 transition-opacity">YEARS_EXP</div>
+                <div className="text-technical mt-2 opacity-80 group-hover:opacity-100 transition-opacity text-white/80 group-hover:text-accent">YEARS_EXP</div>
               </div>
               <div className="group cursor-default">
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                   99%
                 </div>
-                <div className="text-technical mt-2 opacity-40 group-hover:opacity-100 transition-opacity">PRECISION</div>
+                <div className="text-technical mt-2 opacity-80 group-hover:opacity-100 transition-opacity text-white/80 group-hover:text-accent">PRECISION</div>
               </div>
               <div className="group cursor-default">
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                   24/7
                 </div>
-                <div className="text-technical mt-2 opacity-40 group-hover:opacity-100 transition-opacity">DEDICATION</div>
+                <div className="text-technical mt-2 opacity-80 group-hover:opacity-100 transition-opacity text-white/80 group-hover:text-accent">DEDICATION</div>
               </div>
             </div>
           </div>

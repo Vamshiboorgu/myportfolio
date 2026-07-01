@@ -34,25 +34,25 @@ export default function App() {
       <Particles />
       <PageLoader isLoading={isLoading} />
       <CustomCursor />
-      
+
       {/* Global Noise Overlay */}
       <div className="fixed inset-0 noise pointer-events-none z-[999]" />
-      
+
       <Navbar />
-      
+
       <main>
         <Hero />
         <Work />
         <BentoSkills />
         <Experience />
-        <PersonalProjects />
+        {/* <PersonalProjects /> */}
         <GraphicDesign />
         <DesignEngineering />
         <Education />
         <Awards />
         <Contact />
       </main>
-      
+
       <Footer />
     </div>
   );

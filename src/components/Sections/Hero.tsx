@@ -1,4 +1,5 @@
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
 import { Download, Linkedin } from "lucide-react";
 import { PORTFOLIO_DATA } from "../../constants";
 import { GenericMarquee } from "../Reusable/GenericMarquee";
@@ -6,6 +7,16 @@ import { GenericMarquee } from "../Reusable/GenericMarquee";
 export const Hero = () => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+
+  const [roleIndex, setRoleIndex] = useState(0);
+  const roles = ["UI/UX DESIGNER", "UI/UX DEVELOPER"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
 
   const expertiseSkills = [
     "UX DESIGN",
@@ -62,7 +73,22 @@ export const Hero = () => {
             className="flex flex-col"
           >
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-accent">UI/UX DEVELOPER & DESIGNER</span>
+              <span className="flex items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-accent relative h-6">
+                <span className="relative flex items-center justify-start w-[240px] md:w-[280px]">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={roles[roleIndex]}
+                      initial={{ opacity: 0, filter: "blur(10px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, filter: "blur(10px)" }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      className="absolute left-0"
+                    >
+                      {roles[roleIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </span>
             </div>
             <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display font-bold tracking-tighter leading-[0.9] uppercase mb-8">
               {PORTFOLIO_DATA.name.split(' ')[0]} <br />

@@ -34,7 +34,7 @@ export const SectionHeader = ({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-5xl sm:text-6xl md:text-8xl font-display font-bold tracking-tighter uppercase leading-[0.9]"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tighter uppercase leading-[0.9]"
       >
         {title} {subtitle && <br />}
         {subtitle && <span className="text-white/20">{subtitle}.</span>}
