@@ -9,7 +9,7 @@ export const Hero = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
   const [roleIndex, setRoleIndex] = useState(0);
-  const roles = ["UI/UX DESIGNER", "UI/UX DEVELOPER"];
+  const roles = ["DASHBOARDS", "DESIGN SYSTEMS", "VOICE UI", "REACT APPS"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -69,11 +69,12 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0 }}
             className="flex flex-col"
           >
             <div className="flex items-center gap-4 mb-6">
               <span className="flex items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-accent relative h-6">
+                <span>I BUILD</span>
                 <span className="relative flex items-center justify-start w-[240px] md:w-[280px]">
                   <AnimatePresence mode="wait">
                     <motion.span
@@ -99,22 +100,32 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:text-right lg:ml-auto max-w-md flex flex-col items-start lg:items-end"
           >
-            <p className="text-sm md:text-base lg:text-lg text-white/50 leading-relaxed font-light mb-8 text-left lg:text-right">
-              I use a design thinking approach rooted in user research, rapid prototyping, and testing - helping me uncover insights early and create intuitive, impactful solutions.
+            <p className="text-sm md:text-base lg:text-lg text-white/90 leading-relaxed font-light mb-8 text-left lg:text-right">
+              UI/UX Designer & Developer, 4 yrs — I design and build dashboards, design systems, and web apps from Figma to production React.
             </p>
-            <motion.a
-              href="/VamshiBoorgu.docx"
-              download="VamshiBoorgu.docx"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-accent text-black font-mono font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white transition-colors duration-300 hover:shadow-[0_0_30px_rgba(0,229,153,0.4)]"
-            >
-              DOWNLOAD RESUME
-              <Download className="w-4 h-4" />
-            </motion.a>
+            <div className="flex flex-col sm:flex-row gap-4 w-full justify-start lg:justify-end">
+              <motion.a
+                href={`mailto:${PORTFOLIO_DATA.email}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 bg-accent text-black font-mono font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white transition-colors duration-300 hover:shadow-[0_0_30px_rgba(0,229,153,0.4)]"
+              >
+                LET'S TALK
+              </motion.a>
+              <motion.a
+                href="/VamshiBoorgu.docx"
+                download="VamshiBoorgu.docx"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 border border-white/20 text-white font-mono font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-white/5 hover:border-white/50 transition-colors duration-300"
+              >
+                RESUME
+                <Download className="w-4 h-4" />
+              </motion.a>
+            </div>
           </motion.div>
         </div>
       </div>
