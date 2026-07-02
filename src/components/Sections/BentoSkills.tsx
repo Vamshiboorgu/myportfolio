@@ -25,7 +25,7 @@ export const BentoSkills = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter uppercase leading-[0.85] text-white"
+              className="text-5xl md:text-[72px] font-display font-bold tracking-tighter uppercase leading-[0.85] text-white"
             >
               Designing <br />
               with <span className="text-accent underline decoration-white/10 underline-offset-8">Purpose</span> <br />
