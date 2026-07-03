@@ -70,7 +70,7 @@ export const Work = () => {
             <motion.div style={{ x, paddingLeft: 'calc((100vw - min(100vw, 80rem)) / 2 + 1.5rem)' }} className="flex gap-8">
               {currentCompanyProjects.map((project, i) => (
                 <div key={project.id} className="min-w-[350px] md:min-w-[450px] flex-shrink-0">
-                  <div className="border border-white/[0.08] p-8 sm:p-10 h-full min-h-[320px] md:min-h-[400px] bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(0,229,153,0.15)] hover:border-white/[0.15] hover:from-white/[0.05] transition-all duration-500 flex flex-col justify-between group/card relative overflow-hidden">
+                  <div className="border border-white/10 p-8 sm:p-10 h-full min-h-[320px] md:min-h-[400px] bg-white/5 backdrop-blur-xl hover:-translate-y-2 hover:shadow-[0_20px_40px_-20px_rgba(0,229,153,0.3)] hover:border-white/20 hover:bg-white/10 transition-all duration-500 flex flex-col justify-between group/card relative overflow-hidden rounded-2xl">
                     <ProjectContent project={project} i={i} />
                   </div>
                 </div>

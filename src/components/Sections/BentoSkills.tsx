@@ -5,10 +5,10 @@ import { GlassCard } from "../Reusable/GlassCard";
 
 export const BentoSkills = () => {
   return (
-    <section id="expertise" className="py-24 md:py-40 px-6 relative overflow-hidden bg-ink">
+    <section id="expertise" className="py-24 md:py-20 px-6 relative overflow-hidden bg-ink">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 items-start mb-32">
           {/* Large Title Section */}
@@ -34,7 +34,7 @@ export const BentoSkills = () => {
           </div>
 
           {/* Bio Description */}
-          <div className="lg:w-1/2 lg:pt-24">
+          <div className="lg:w-1/2">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export const BentoSkills = () => {
             >
               {PORTFOLIO_DATA.bio}
             </motion.p>
-            
+
             <div className="flex flex-wrap gap-12 border-t border-white/5 pt-12">
               <div className="group cursor-default">
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
@@ -139,7 +139,7 @@ export const BentoSkills = () => {
         </div>
 
         {/* CTA Footer */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -149,7 +149,7 @@ export const BentoSkills = () => {
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-technical text-white/40 tracking-widest">AVAILABLE_FOR_NEW_PROJECTS_2026</span>
           </div>
-          <motion.a 
+          <motion.a
             href="#contact"
             whileHover={{ x: 10 }}
             className="flex items-center gap-4 text-white hover:text-accent transition-colors group"

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 
@@ -19,10 +19,10 @@ export const Navbar = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    
+
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
-    
+
     if (element) {
       // 100px offset to account for the floating navbar
       const offset = 100;
@@ -40,7 +40,7 @@ export const Navbar = () => {
   const navLinks = [
     { name: "WORK", href: "#work" },
     { name: "EXPERTISE", href: "#expertise" },
-    { name: "EXPERIENCE", href: "#experience" },
+    { name: "AWARDS", href: "#awards" },
     { name: "CONTACT", href: "#contact" }
   ];
 
@@ -51,14 +51,13 @@ export const Navbar = () => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className={`pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full border flex justify-between items-center relative overflow-hidden ${
-          isScrolled 
-            ? "w-[85%] md:w-max max-w-3xl bg-ink/70 border-white/10 backdrop-blur-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] py-2 px-4 md:gap-12" 
+        className={`pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full border flex justify-between items-center relative overflow-hidden ${isScrolled
+            ? "w-[85%] md:w-max max-w-3xl bg-ink/70 border-white/10 backdrop-blur-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] py-2 px-4 md:gap-12"
             : "w-full max-w-7xl bg-white/[0.02] border-white/5 backdrop-blur-xl py-4 px-6 md:px-10 md:gap-24"
-        }`}
+          }`}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent pointer-events-none" />
-        
+
         <motion.a
           href="#"
           onClick={(e) => handleNavClick(e, "#")}
@@ -84,7 +83,7 @@ export const Navbar = () => {
         </motion.a>
 
         {/* Desktop Nav (Magnetic Pill) */}
-        <div 
+        <div
           className="hidden md:flex items-center relative z-10 p-1 bg-white/5 border border-white/10 rounded-full shadow-inner"
           onMouseLeave={() => setHoveredIndex(null)}
         >

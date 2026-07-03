@@ -29,7 +29,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay }}
-      className={`border border-white/5 p-10 bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-md ${hoverTranslate} hover:border-white/[0.15] hover:from-white/[0.05] transition-all duration-500 group relative overflow-hidden ${className}`}
+      className={`border border-white/10 p-10 bg-white/5 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] ${hoverTranslate} hover:border-white/20 hover:bg-white/10 transition-all duration-500 group relative overflow-hidden ${className}`}
     >
       {showGlow && (
         <div className={`absolute top-0 right-0 w-48 h-48 ${glowColor}/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-all duration-700`} />

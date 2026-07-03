@@ -115,7 +115,7 @@ export const PORTFOLIO_DATA = {
       category: "Voice Assistant App",
       description: "A highly conversational AI voice assistant mobile interface with predictive text and generative sound waves.",
       image: "https://picsum.photos/seed/echo/1200/800",
-      tags: ["Voice UI", "AI", "Mobile"],
+      tags: ["AI", "Mobile"],
       link: "#",
       caseStudy: {
         overview: "Echo is a concept for an AI voice assistant that bridges the gap between text-based chat and purely voice-based interaction.",
@@ -186,6 +186,16 @@ export const PORTFOLIO_DATA = {
     }
   ],
   awards: [
+    {
+      title: "1st Place - Internal Office Hackathon",
+      description: "Won first place among 6 competing groups in our internal office hackathon. Built a winning solution through excellent teamwork and innovation.",
+      date: "2026",
+      images: [
+        "/gallery/image.jpg",
+        "/gallery/image-1.jpg",
+        "/gallery/image-2.jpg"
+      ]
+    },
     {
       title: "Employee of the Month",
       description: "Awarded for outstanding performance and dedication to project delivery.",
