@@ -68,8 +68,8 @@ export const GraphicDesign = () => {
               key={group.groupName}
               onClick={() => setActiveTab(group.groupName)}
               className={`px-5 py-2.5 rounded-full text-sm font-display tracking-widest uppercase transition-all duration-300 border ${activeTab === group.groupName
-                  ? "bg-white text-ink border-white"
-                  : "bg-transparent text-white/60 border-white/10 hover:border-white/30 hover:text-white"
+                ? "bg-white text-ink border-white"
+                : "bg-transparent text-white/60 border-white/10 hover:border-white/30 hover:text-white"
                 }`}
             >
               {group.groupName}
@@ -91,9 +91,9 @@ export const GraphicDesign = () => {
         <div className="min-h-[50vh] relative group/gallery">
           {/* Gradient Right Edge Fade */}
           <div className="absolute right-0 top-0 bottom-6 w-16 md:w-32 bg-gradient-to-l from-ink to-transparent z-10 pointer-events-none" />
-          
+
           {/* Navigation Buttons */}
-          <button 
+          <button
             onClick={() => scroll('left')}
             className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-20 p-3 bg-white text-ink rounded-full opacity-80 hover:opacity-100 transition-opacity duration-300 shadow-xl hidden md:flex items-center justify-center ${!canScrollLeft ? 'invisible' : ''}`}
             disabled={!canScrollLeft}
@@ -102,7 +102,7 @@ export const GraphicDesign = () => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
-          <button 
+          <button
             onClick={() => scroll('right')}
             className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-20 p-3 bg-white text-ink rounded-full opacity-80 hover:opacity-100 transition-opacity duration-300 shadow-xl hidden md:flex items-center justify-center ${!canScrollRight ? 'invisible' : ''}`}
             disabled={!canScrollRight}
@@ -121,10 +121,10 @@ export const GraphicDesign = () => {
               transition={{ duration: 0.4 }}
             >
               {/* Horizontal Scroll Gallery */}
-              <div 
+              <div
                 ref={scrollRef}
                 onScroll={checkScroll}
-                className="flex gap-4 md:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory" 
+                className="flex gap-4 md:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {/* CSS to hide scrollbar for webkit */}

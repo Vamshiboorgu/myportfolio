@@ -70,7 +70,7 @@ export const Hero = () => {
             </h2>
 
             <p className="text-base md:text-lg lg:text-xl text-white/80 font-light max-w-xl relative z-10 leading-relaxed">
-              UI/UX Designer & Developer, 4 yrs — I design and build dashboards, design systems, and web apps from Figma to production React.
+              UI/UX Designer & Developer, 3.7 yrs — I design and build dashboards, design systems, and web apps from Figma to production React.
             </p>
           </motion.div>
 
