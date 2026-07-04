@@ -9,7 +9,7 @@ export const Awards = () => {
   const [selectedAward, setSelectedAward] = useState<any>(null);
 
   return (
-    <section id="awards" className="py-20 md:py-32 px-6 relative overflow-hidden grid-lines">
+    <section id="awards" className="py-[45px] md:py-32 px-6 relative overflow-hidden grid-lines">
       <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
 
       <div className="max-w-5xl mx-auto">

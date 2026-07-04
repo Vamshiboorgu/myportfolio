@@ -9,7 +9,7 @@ export const Hero = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
   const [roleIndex, setRoleIndex] = useState(0);
-  const roles = ["DASHBOARDS", "DESIGN SYSTEMS", "VOICE UI", "REACT APPS"];
+  const roles = ["DASHBOARDS", "DESIGN SYSTEMS", "UX RESEARCH", "WIREFRAMING", "REACT APPS"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -87,7 +87,7 @@ export const Hero = () => {
               <span className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-accent/80 mb-6 block relative z-10">
                 I BUILD
               </span>
-              <div className="h-16 relative z-10">
+              <div className="h-10 md:h-16 relative z-10">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roles[roleIndex]}
@@ -95,7 +95,7 @@ export const Hero = () => {
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     exit={{ opacity: 0, filter: "blur(12px)", y: -15 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
-                    className="absolute left-0 text-[42px] font-display font-bold tracking-tighter uppercase text-accent drop-shadow-[0_0_15px_rgba(0,229,153,0.5)] whitespace-nowrap"
+                    className="absolute left-0 text-[26px] md:text-[42px] font-display font-bold tracking-tighter uppercase text-accent drop-shadow-[0_0_15px_rgba(0,229,153,0.5)] whitespace-nowrap"
                   >
                     {roles[roleIndex]}
                   </motion.span>

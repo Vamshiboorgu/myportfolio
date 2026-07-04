@@ -46,7 +46,7 @@ export const GraphicDesign = () => {
   };
 
   return (
-    <section id="graphic-design" className="py-20 md:py-32 relative border-t border-white/5 bg-ink min-h-screen">
+    <section id="graphic-design" className="py-[45px] md:py-32 relative border-t border-white/5 bg-ink min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12">
           <SectionHeader

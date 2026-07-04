@@ -26,7 +26,7 @@ const features = [
 
 export const DesignEngineering = () => {
   return (
-    <section id="engineering" className="py-20 md:py-32 px-6 grid-lines relative overflow-hidden bg-white/[0.01]">
+    <section id="engineering" className="py-[45px] md:py-32 px-6 grid-lines relative overflow-hidden bg-white/[0.01]">
       <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
       <div className="max-w-7xl mx-auto">
         <SectionHeader

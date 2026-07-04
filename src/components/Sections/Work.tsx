@@ -49,10 +49,10 @@ export const Work = () => {
           <div className="max-w-7xl mx-auto w-full px-6 mb-20">
             <div className="flex items-end justify-between gap-12 border-b border-white/10 pb-12">
               <div className="max-w-2xl">
-                <SectionHeader 
-                  technical="SELECTED_ARCHIVES" 
-                  title="Selected" 
-                  subtitle="Artifacts" 
+                <SectionHeader
+                  technical="SELECTED_ARCHIVES"
+                  title="Selected"
+                  subtitle="Artifacts"
                   align="left"
                 />
               </div>
@@ -81,20 +81,20 @@ export const Work = () => {
       </div>
 
       {/* ── MOBILE / TABLET LAYOUT ── */}
-      <div className="lg:hidden py-32 px-4 sm:px-6 flex flex-col relative w-full overflow-visible">
+      <div className="lg:hidden py-[45px] px-4 sm:px-6 flex flex-col relative w-full overflow-visible">
         <div className="mb-16 border-b border-white/10 pb-12">
-          <SectionHeader 
-            technical="SELECTED_ARCHIVES" 
-            title="Selected" 
-            subtitle="Artifacts" 
+          <SectionHeader
+            technical="SELECTED_ARCHIVES"
+            title="Selected"
+            subtitle="Artifacts"
             align="left"
           />
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-8 text-white/60 text-sm sm:text-base leading-relaxed font-light">A curated selection of digital products developed during my tenure at IBaseIT, blending aesthetic precision with functional depth.</motion.p>
         </div>
-        
+
         <div className="flex flex-col relative pb-[20vh] w-full gap-4 sm:gap-6 z-20">
           {currentCompanyProjects.map((project, i) => (
-              <motion.div
+            <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 150, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
