@@ -157,7 +157,7 @@ export const Hero = () => {
             className="md:col-span-4 p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/[0.08] flex flex-col items-center justify-center backdrop-blur-xl text-center hover:border-white/[0.15] transition-colors duration-500 group"
           >
             <motion.a
-              href="https://linkedin.com/in/vamshi-boorgu-b37119154"
+              href="https://www.linkedin.com/in/vamshi-boorgu-462419240/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-4 w-full h-full justify-center"
