@@ -18,7 +18,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 bg-ink relative overflow-hidden">
+    <section id="contact" className="py-[45px] px-6 bg-ink relative overflow-hidden">
       {/* Background elements for modern look */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 

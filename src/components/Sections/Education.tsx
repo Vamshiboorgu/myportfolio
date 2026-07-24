@@ -6,7 +6,7 @@ import { GlassCard } from "../Reusable/GlassCard";
 
 export const Education = () => {
   return (
-    <section id="education" className="py-20 md:py-32 px-6 grid-lines relative overflow-hidden">
+    <section id="education" className="py-[45px] md:py-32 px-6 grid-lines relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
       <div className="max-w-7xl mx-auto">
         <SectionHeader

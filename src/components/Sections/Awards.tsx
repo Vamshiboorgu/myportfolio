@@ -9,14 +9,14 @@ export const Awards = () => {
   const [selectedAward, setSelectedAward] = useState<any>(null);
 
   return (
-    <section id="awards" className="py-20 md:py-32 px-6 relative overflow-hidden grid-lines">
+    <section id="awards" className="py-[45px] md:py-32 px-6 relative overflow-hidden grid-lines">
       <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
 
       <div className="max-w-5xl mx-auto">
-        <SectionHeader 
-          technical="RECOGNITION" 
-          title="The" 
-          subtitle="Awards" 
+        <SectionHeader
+          technical="RECOGNITION"
+          title="The"
+          subtitle="Awards"
           className="mb-16 md:mb-24"
         />
 
@@ -33,12 +33,12 @@ export const Awards = () => {
                 zIndex: i + 1
               }}
             >
-              <div className="w-24 h-24 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-all duration-700 shrink-0 overflow-hidden relative">
+              <div className="w-full max-w-[320px] aspect-[4/3] md:w-24 md:h-24 md:aspect-square border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-all duration-700 shrink-0 overflow-hidden relative">
                 {(award as any).images && (award as any).images.length > 0 ? (
-                  <img 
-                    src={(award as any).images[0]} 
-                    alt={award.title} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 absolute inset-0" 
+                  <img
+                    src={(award as any).images[0]}
+                    alt={award.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 absolute inset-0"
                   />
                 ) : (
                   <Trophy className="w-12 h-12" fill="currentColor" />
@@ -55,7 +55,7 @@ export const Awards = () => {
                   {award.description}
                 </p>
                 {(award as any).images && (award as any).images.length > 0 && (
-                  <button 
+                  <button
                     onClick={() => setSelectedAward(award)}
                     className="mt-6 flex items-center gap-2 text-sm font-mono tracking-wider text-white/50 hover:text-accent transition-colors uppercase mx-auto md:mx-0"
                   >
@@ -71,10 +71,10 @@ export const Awards = () => {
 
       <AnimatePresence>
         {selectedAward && (
-          <ImageGalleryModal 
-            images={selectedAward.images} 
-            title={selectedAward.title} 
-            onClose={() => setSelectedAward(null)} 
+          <ImageGalleryModal
+            images={selectedAward.images}
+            title={selectedAward.title}
+            onClose={() => setSelectedAward(null)}
           />
         )}
       </AnimatePresence>
