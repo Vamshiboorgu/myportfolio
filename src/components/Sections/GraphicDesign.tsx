@@ -56,13 +56,25 @@ export const GraphicDesign = () => {
             align="left"
             className="mb-0"
           />
-          <p className="max-w-sm text-white/60 text-base leading-relaxed font-light">
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-sm text-white/60 text-base leading-relaxed font-light"
+          >
             A showcase of my raw visual design skills, organized by theme and project, including logo marks, brand identities, and layout compositions.
-          </p>
+          </motion.p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 md:gap-4 mb-12 items-center justify-center md:justify-start">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="flex flex-wrap gap-2 md:gap-4 mb-12 items-center justify-center md:justify-start"
+        >
           {graphicDesignGroups.map((group) => (
             <button
               key={group.groupName}
@@ -75,7 +87,7 @@ export const GraphicDesign = () => {
               {group.groupName}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Scroll Indicator */}
         <div className="flex justify-end mb-4 pr-2">

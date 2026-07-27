@@ -86,15 +86,15 @@ export const BentoSkills = () => {
             </GlassCard>
           </div>
 
-          {/* Design Card - Span 4 */}
+          {/* UX Process Card - Span 4 */}
           <div className="md:col-span-4 h-full">
             <GlassCard delay={0.2} className="h-full">
               <div className="flex items-center gap-4 mb-10 px-2">
                 <Layout className="w-5 h-5 text-accent" />
-                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">UX Design</h4>
+                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">UX Process</h4>
               </div>
               <div className="flex flex-wrap gap-2 px-2">
-                {PORTFOLIO_DATA.skills.design.slice(0, 7).map(skill => (
+                {PORTFOLIO_DATA.skills.uxProcess.map(skill => (
                   <span key={skill} className="px-4 py-2 text-xs md:text-sm font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
                     {skill}
                   </span>
@@ -103,15 +103,15 @@ export const BentoSkills = () => {
             </GlassCard>
           </div>
 
-          {/* Engineering Card - Span 4 */}
+          {/* UI Design Card - Span 4 */}
           <div className="md:col-span-4 h-full">
             <GlassCard delay={0.3} className="h-full">
               <div className="flex items-center gap-4 mb-10 px-2">
                 <Zap className="w-5 h-5 text-accent" />
-                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">Engineering</h4>
+                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">UI Design</h4>
               </div>
               <div className="flex flex-wrap gap-2 px-2">
-                {PORTFOLIO_DATA.skills.technical.map(skill => (
+                {PORTFOLIO_DATA.skills.uiDesign.map(skill => (
                   <span key={skill} className="px-4 py-2 text-xs md:text-sm font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
                     {skill}
                   </span>
@@ -120,12 +120,12 @@ export const BentoSkills = () => {
             </GlassCard>
           </div>
 
-          {/* Core Arsenal / Tools - Span 12 */}
+          {/* Tools - Span 12 */}
           <div className="md:col-span-12">
             <GlassCard delay={0.4} className="flex flex-col">
               <div className="flex items-center gap-4 mb-10 px-2">
                 <Sparkles className="w-5 h-5 text-accent" />
-                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80 shrink-0">Core Arsenal</h4>
+                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80 shrink-0">Tools</h4>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-4 px-2">
                 {PORTFOLIO_DATA.skills.tools.map(tool => (

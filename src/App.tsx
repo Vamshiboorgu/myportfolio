@@ -1,26 +1,37 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
 import { PageLoader } from "./PageLoader";
-import { Particles } from "./Particles";
+import { ScrollProgress } from "./components/animations/ScrollProgress";
+import { TransitionProvider } from "./components/transitions/TransitionProvider";
+import { PageCurtain } from "./components/transitions/PageCurtain";
+import Home from "./pages/Home";
+import CaseStudy from "./pages/CaseStudy";
+import Lenis from "lenis";
 
-// Navigation
-import { Navbar } from "./components/Navigation/Navbar";
-import { Footer } from "./components/Navigation/Footer";
+function AnimatedRoutes() {
+  const location = useLocation();
 
-// Common
-import { CustomCursor } from "./components/Common/CustomCursor";
-
-// Sections
-import { Hero } from "./components/Sections/Hero";
-import { Work } from "./components/Sections/Work";
-import { PersonalProjects } from "./components/Sections/PersonalProjects";
-import { GraphicDesign } from "./components/Sections/GraphicDesign";
-import { CareerAndSkills } from "./components/Sections/CareerAndSkills";
-import { DesignEngineering } from "./components/Sections/DesignEngineering";
-import { Education } from "./components/Sections/Education";
-import { Awards } from "./components/Sections/Awards";
-import { Contact } from "./components/Sections/Contact";
-
-import Lenis from 'lenis';
+  return (
+    <AnimatePresence mode="popLayout" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          duration: 0.2,
+          ease: "easeOut",
+        }}
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/work/:slug" element={<CaseStudy />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,12 +39,11 @@ export default function App() {
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      smoothWheel: true,
+      syncTouch: false,
+      touchMultiplier: 1.5,
     } as any);
 
     function raf(time: number) {
@@ -44,7 +54,7 @@ export default function App() {
 
     // Stop loader after delay
     const timer = setTimeout(() => setIsLoading(false), 1200);
-    
+
     return () => {
       clearTimeout(timer);
       lenis.destroy();
@@ -52,29 +62,20 @@ export default function App() {
   }, []);
 
   return (
-    <div className="font-sans selection:bg-accent/30 selection:text-accent bg-ink text-white scroll-smooth relative">
-      <Particles />
-      <PageLoader isLoading={isLoading} />
-      <CustomCursor />
+    <BrowserRouter>
+      <TransitionProvider>
+        {/* Scroll progress bar */}
+        <ScrollProgress />
 
-      {/* Global Noise Overlay */}
-      <div className="fixed inset-0 noise pointer-events-none z-[999]" />
+        {/* Page loading skeleton */}
+        <PageLoader isLoading={isLoading} />
 
-      <Navbar />
+        {/* Curtain overlay — always mounted, shows when triggered */}
+        <PageCurtain />
 
-      <main>
-        <Hero />
-        <Work />
-        <CareerAndSkills />
-        {/* <PersonalProjects /> */}
-        <GraphicDesign />
-        <DesignEngineering />
-        <Education />
-        <Awards />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+        {/* Page routes */}
+        <AnimatedRoutes />
+      </TransitionProvider>
+    </BrowserRouter>
   );
 }

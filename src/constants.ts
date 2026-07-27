@@ -1,15 +1,43 @@
 export const PORTFOLIO_DATA = {
   name: "Vamshi Boorgu",
-  role: "UI/UX Developer & Designer",
-  experience: "3.7 Years",
+  role: "UX/UI Designer",
+  experience: "3.8 Years",
   location: "Hyderabad, Telangana",
   email: "vamshiboorgu74@gmail.com",
   phone: "6301437366",
-  bio: "UI/UX Designer and Front-End Developer with 3.7 years of experience in building responsive websites, React applications, and intuitive digital interfaces. Skilled in React, front-end UI coding, HTML, CSS, Bootstrap, and Figma, with a strong understanding of layout structure, visual hierarchy, and user-centered design. Adept at transforming concepts into clean, functional, and visually consistent web experiences.",
+  bio: "UX/UI Designer with 3.8 years of experience crafting user-centered digital products, design systems, and intuitive web applications. Specialized in turning research into scalable, production-ready interfaces.",
   skills: {
-    design: ["UI Design", "UX Research", "Figma", "Adobe XD", "Photoshop", "Illustrator", "Wireframing", "Invision"],
-    tools: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Canva", "Gitlab", "Eclipse"],
-    technical: ["HTML5", "CSS3", "Bootstrap", "JavaScript (Basics)", "Angular", "React", "Ionic"]
+    uxProcess: [
+      "User Research",
+      "Usability Testing",
+      "Information Architecture",
+      "Wireframing",
+      "Prototyping",
+      "User Flows",
+      "Persona Development",
+      "Competitive Analysis",
+      "Interaction Design"
+    ],
+    uiDesign: [
+      "Visual Design",
+      "Design Systems",
+      "Responsive Design",
+      "Typography",
+      "Component Libraries",
+      "Micro-interactions",
+      "Accessibility (WCAG)",
+      "Hand-off Documentation"
+    ],
+    tools: [
+      "Figma (Primary)",
+      "Adobe XD",
+      "Photoshop",
+      "Illustrator",
+      "FigJam",
+      "Miro",
+      "Maze / Hotjar"
+    ],
+    frontEndNote: "Basic front-end: HTML/CSS, React"
   },
   projects: [
     {
@@ -168,9 +196,9 @@ export const PORTFOLIO_DATA = {
   experience_timeline: [
     {
       company: "IBaseIT, Hyderabad",
-      role: "UI/UX Developer & Designer",
+      role: "UX/UI Designer",
       period: "Nov 2022 - Present",
-      description: "Specializing in intuitive interface design and user experience. Designed web applications using Figma and converted designs to responsive HTML/CSS. Worked on UI development using Angular and React frameworks."
+      description: "Specializing in user-centered interface design, UX research, wireframing, prototyping, and scalable design systems for enterprise web applications."
     }
   ],
   education: [

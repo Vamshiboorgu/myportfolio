@@ -24,13 +24,14 @@ export const Awards = () => {
           {PORTFOLIO_DATA.awards.map((award, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              className="sticky border border-white/10 p-12 md:p-16 flex flex-col md:flex-row items-center gap-12 group hover:bg-white/[0.02] transition-all bg-black/80 backdrop-blur-3xl shadow-2xl"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+              className="sticky border border-white/10 p-8 md:p-14 flex flex-col md:flex-row items-center gap-8 md:gap-12 group hover:bg-white/[0.03] hover:border-white/20 transition-all bg-black/90 backdrop-blur-3xl shadow-2xl rounded-3xl overflow-hidden"
               style={{
-                top: `calc(120px + ${i * 40}px)`,
-                zIndex: i + 1
+                top: `calc(120px + ${i * 32}px)`,
+                zIndex: i + 1,
               }}
             >
               <div className="w-full max-w-[320px] aspect-[4/3] md:w-24 md:h-24 md:aspect-square border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-all duration-700 shrink-0 overflow-hidden relative">

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "../../constants";
+import { SplitTextReveal } from "../animations/SplitTextReveal";
 
 export const Contact = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -23,21 +24,24 @@ export const Contact = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
-          <div className="flex items-center gap-4 mb-4">
+        <div className="mb-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-4 mb-4"
+          >
             <span className="w-12 h-[1px] bg-accent"></span>
             <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-accent">LET'S CONNECT</span>
-          </div>
+          </motion.div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter leading-none uppercase">
-            Let's create <br />
-            <span className="text-white/30 italic">something great</span>
+            <SplitTextReveal text="Let's create" /> <br />
+            <span className="text-white/30 italic">
+              <SplitTextReveal text="something great" delay={0.15} />
+            </span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
           <motion.div
