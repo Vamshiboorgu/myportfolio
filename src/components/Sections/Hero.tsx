@@ -185,8 +185,8 @@ export const Hero = () => {
                 LET'S TALK
               </motion.a>
               <motion.a
-                href="/VamshiBoorgu.docx"
-                download="VamshiBoorgu.docx"
+                href="/VamshiBoorgu_Resume_UIUX.docx"
+                download="VamshiBoorgu_Resume_UIUX.docx"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-3 px-7 py-4 border border-white/20 text-white font-mono font-bold uppercase tracking-widest text-xs rounded-2xl hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300 backdrop-blur-md"
@@ -247,7 +247,7 @@ export const Hero = () => {
               <img
                 src="/designer_headshot.jpg"
                 alt="Vamshi Boorgu - UX/UI Designer"
-                className="w-full h-full object-cover object-center rounded-[172px] sm:rounded-[192px] filter brightness-105 contrast-105 transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-top rounded-[172px] sm:rounded-[192px] filter brightness-105 contrast-105 transition-transform duration-700 group-hover:scale-105"
               />
 
               {/* Subtle gradient overlay at bottom of capsule */}
