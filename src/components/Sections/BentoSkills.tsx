@@ -5,10 +5,10 @@ import { GlassCard } from "../Reusable/GlassCard";
 
 export const BentoSkills = () => {
   return (
-    <section id="about" className="py-24 md:py-40 px-6 relative overflow-hidden bg-ink">
+    <section id="expertise" className="py-24 md:py-20 px-6 relative overflow-hidden bg-ink">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 items-start mb-32">
           {/* Large Title Section */}
@@ -25,7 +25,7 @@ export const BentoSkills = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-6xl sm:text-7xl md:text-8xl font-display font-bold tracking-tighter uppercase leading-[0.85] text-white"
+              className="text-5xl md:text-[72px] font-display font-bold tracking-tighter uppercase leading-[0.85] text-white"
             >
               Designing <br />
               with <span className="text-accent underline decoration-white/10 underline-offset-8">Purpose</span> <br />
@@ -34,7 +34,7 @@ export const BentoSkills = () => {
           </div>
 
           {/* Bio Description */}
-          <div className="lg:w-1/2 lg:pt-24">
+          <div className="lg:w-1/2">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -44,25 +44,25 @@ export const BentoSkills = () => {
             >
               {PORTFOLIO_DATA.bio}
             </motion.p>
-            
+
             <div className="flex flex-wrap gap-12 border-t border-white/5 pt-12">
               <div className="group cursor-default">
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                   {PORTFOLIO_DATA.experience.split(' ')[0]}
                 </div>
-                <div className="text-technical mt-2 opacity-40 group-hover:opacity-100 transition-opacity">YEARS_EXP</div>
+                <div className="text-technical mt-2 opacity-80 group-hover:opacity-100 transition-opacity text-white/80 group-hover:text-accent">YEARS_EXP</div>
               </div>
               <div className="group cursor-default">
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                   99%
                 </div>
-                <div className="text-technical mt-2 opacity-40 group-hover:opacity-100 transition-opacity">PRECISION</div>
+                <div className="text-technical mt-2 opacity-80 group-hover:opacity-100 transition-opacity text-white/80 group-hover:text-accent">PRECISION</div>
               </div>
               <div className="group cursor-default">
                 <div className="text-5xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                   24/7
                 </div>
-                <div className="text-technical mt-2 opacity-40 group-hover:opacity-100 transition-opacity">DEDICATION</div>
+                <div className="text-technical mt-2 opacity-80 group-hover:opacity-100 transition-opacity text-white/80 group-hover:text-accent">DEDICATION</div>
               </div>
             </div>
           </div>
@@ -86,15 +86,15 @@ export const BentoSkills = () => {
             </GlassCard>
           </div>
 
-          {/* Design Card - Span 4 */}
+          {/* UX Process Card - Span 4 */}
           <div className="md:col-span-4 h-full">
             <GlassCard delay={0.2} className="h-full">
               <div className="flex items-center gap-4 mb-10 px-2">
                 <Layout className="w-5 h-5 text-accent" />
-                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">UX Design</h4>
+                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">UX Process</h4>
               </div>
               <div className="flex flex-wrap gap-2 px-2">
-                {PORTFOLIO_DATA.skills.design.slice(0, 7).map(skill => (
+                {PORTFOLIO_DATA.skills.uxProcess.map(skill => (
                   <span key={skill} className="px-4 py-2 text-xs md:text-sm font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
                     {skill}
                   </span>
@@ -103,15 +103,15 @@ export const BentoSkills = () => {
             </GlassCard>
           </div>
 
-          {/* Engineering Card - Span 4 */}
+          {/* UI Design Card - Span 4 */}
           <div className="md:col-span-4 h-full">
             <GlassCard delay={0.3} className="h-full">
               <div className="flex items-center gap-4 mb-10 px-2">
                 <Zap className="w-5 h-5 text-accent" />
-                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">Engineering</h4>
+                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80">UI Design</h4>
               </div>
               <div className="flex flex-wrap gap-2 px-2">
-                {PORTFOLIO_DATA.skills.technical.map(skill => (
+                {PORTFOLIO_DATA.skills.uiDesign.map(skill => (
                   <span key={skill} className="px-4 py-2 text-xs md:text-sm font-mono border border-white/5 text-white/30 group-hover:border-accent/20 group-hover:text-accent/60 transition-all uppercase tracking-tighter">
                     {skill}
                   </span>
@@ -120,12 +120,12 @@ export const BentoSkills = () => {
             </GlassCard>
           </div>
 
-          {/* Core Arsenal / Tools - Span 12 */}
+          {/* Tools - Span 12 */}
           <div className="md:col-span-12">
             <GlassCard delay={0.4} className="flex flex-col">
               <div className="flex items-center gap-4 mb-10 px-2">
                 <Sparkles className="w-5 h-5 text-accent" />
-                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80 shrink-0">Core Arsenal</h4>
+                <h4 className="text-lg font-display font-bold uppercase tracking-widest text-white/80 shrink-0">Tools</h4>
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-4 px-2">
                 {PORTFOLIO_DATA.skills.tools.map(tool => (
@@ -139,7 +139,7 @@ export const BentoSkills = () => {
         </div>
 
         {/* CTA Footer */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -149,7 +149,7 @@ export const BentoSkills = () => {
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-technical text-white/40 tracking-widest">AVAILABLE_FOR_NEW_PROJECTS_2026</span>
           </div>
-          <motion.a 
+          <motion.a
             href="#contact"
             whileHover={{ x: 10 }}
             className="flex items-center gap-4 text-white hover:text-accent transition-colors group"

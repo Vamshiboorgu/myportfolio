@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { SplitTextReveal } from "../animations/SplitTextReveal";
 
 interface SectionHeaderProps {
   technical?: string;
@@ -13,7 +14,7 @@ export const SectionHeader = ({
   title,
   subtitle,
   className = "",
-  align = "center"
+  align = "center",
 }: SectionHeaderProps) => {
   const alignmentClass = align === "center" ? "text-center" : "text-left";
   const flexAlignment = align === "center" ? "items-center" : "items-start";
@@ -22,23 +23,27 @@ export const SectionHeader = ({
     <div className={`${alignmentClass} ${className} flex flex-col ${flexAlignment}`}>
       {technical && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: align === "center" ? 0 : -20, y: align === "center" ? 15 : 0 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true }}
-          className="text-technical text-accent mb-6"
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-technical text-accent mb-6 flex items-center gap-2"
         >
-          / {technical}
+          <span className="w-6 h-px bg-accent inline-block" />
+          <span>/ {technical}</span>
         </motion.div>
       )}
-      <motion.h3
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-5xl sm:text-6xl md:text-8xl font-display font-bold tracking-tighter uppercase leading-[0.9]"
-      >
-        {title} {subtitle && <br />}
-        {subtitle && <span className="text-white/20">{subtitle}.</span>}
-      </motion.h3>
+      <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tighter uppercase leading-[0.9]">
+        <SplitTextReveal text={title} />
+        {subtitle && (
+          <>
+            <br />
+            <span className="text-white/20">
+              <SplitTextReveal text={`${subtitle}.`} delay={0.15} />
+            </span>
+          </>
+        )}
+      </h3>
     </div>
   );
 };
