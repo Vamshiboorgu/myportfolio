@@ -13,7 +13,7 @@ export interface CaseStudyData {
   features: string[];
   results: string[];
   learnings: string;
-  images: string[];
+  images?: string[];
 }
 
 export interface Project {
@@ -39,6 +39,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["Dashboard", "Automation", "SaaS"],
     image: "https://picsum.photos/seed/qatts/1200/800",
     caseStudySlug: "qatts",
+    comingSoon: true,
   },
   {
     id: 2,
@@ -49,6 +50,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["UI/UX", "React", "FinTech"],
     image: "https://picsum.photos/seed/cortex/1200/800",
     caseStudySlug: "cortex",
+    comingSoon: true,
   },
   {
     id: 3,
@@ -59,6 +61,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["Supply Chain", "Data", "Logistics"],
     image: "https://picsum.photos/seed/aarowstream/1200/800",
     comingSoon: true,
+    caseStudySlug: "aarowstream",
   },
   {
     id: 4,
@@ -69,6 +72,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["Angular", "Figma", "Web App"],
     image: "https://picsum.photos/seed/genieconvert/1200/800",
     comingSoon: true,
+    caseStudySlug: "genieconvert",
   },
   {
     id: 5,
@@ -79,6 +83,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["Figma", "Angular", "Workforce"],
     image: "https://picsum.photos/seed/envoy/1200/800",
     caseStudySlug: "envoy",
+    comingSoon: true,
   },
   {
     id: 6,
@@ -89,6 +94,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["React", "Healthcare", "Mobile"],
     image: "https://picsum.photos/seed/elovu/1200/800",
     comingSoon: true,
+    caseStudySlug: "elovu",
   },
   {
     id: 7,
@@ -99,6 +105,7 @@ export const PROJECTS_LIST: Project[] = [
     tags: ["Angular", "Ionic", "E-commerce"],
     image: "https://picsum.photos/seed/bdazlai/1200/800",
     comingSoon: true,
+    caseStudySlug: "bdazlai",
   },
 ];
 
@@ -127,17 +134,13 @@ export const CASE_STUDIES: Record<string, CaseStudyData> = {
       "Unified 5 disparate testing tools into 1 dashboard",
     ],
     learnings: "High-density data dashboards require strict visual hierarchy and subtle color-coding to prevent cognitive fatigue during extended monitoring.",
-    images: [
-      "https://picsum.photos/seed/qatts1/800/600",
-      "https://picsum.photos/seed/qatts2/800/600",
-    ],
   },
   cortex: {
     slug: "cortex",
     title: "Cortex Car Insurance",
     subtitle: "Streamlining car insurance quotes & policy management for UK drivers with minimal cognitive load.",
     heroImage: "https://picsum.photos/seed/cortex/1200/800",
-    role: "Lead UI/UX Designer & Frontend Developer",
+    role: "UI/UX Designer & Frontend Developer",
     duration: "4 Months",
     team: "Product Manager, 3 Developers, QA Lead",
     tools: ["Figma", "React", "Tailwind CSS", "TypeScript"],
@@ -156,11 +159,6 @@ export const CASE_STUDIES: Record<string, CaseStudyData> = {
       "Delivered a 100% component-driven design system in React",
     ],
     learnings: "Progressive disclosure paired with live inline validation significantly reduces form anxiety in complex financial products.",
-    images: [
-      "https://picsum.photos/seed/cortex1/800/600",
-      "https://picsum.photos/seed/cortex2/800/600",
-      "https://picsum.photos/seed/cortex3/800/600",
-    ],
   },
   envoy: {
     slug: "envoy",
@@ -169,7 +167,7 @@ export const CASE_STUDIES: Record<string, CaseStudyData> = {
     heroImage: "https://picsum.photos/seed/envoy/1200/800",
     role: "UI/UX Designer",
     duration: "5 Months",
-    team: "Design Lead, Product Manager, Legal Tech Team",
+    team: "Designer, Product Manager, Legal Tech Team",
     tools: ["Figma", "Adobe XD", "Angular"],
     overview: "Envoy is an enterprise hiring platform facilitating visa sponsorship, legal mobilization, and cross-border workforce compliance.",
     challenge: "Managing international visas involves strict compliance deadlines and complex document workflows. Enterprise HR managers struggled with tracking status across hundreds of candidates.",
@@ -185,9 +183,5 @@ export const CASE_STUDIES: Record<string, CaseStudyData> = {
       "Accelerated candidate onboarding time by 3 weeks",
     ],
     learnings: "Designing for compliance requires clear status indicators and upfront confirmation steps to ensure zero user error.",
-    images: [
-      "https://picsum.photos/seed/envoy1/800/600",
-      "https://picsum.photos/seed/envoy2/800/600",
-    ],
   },
 };

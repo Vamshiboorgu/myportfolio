@@ -449,50 +449,43 @@ export default function CaseStudy() {
           </div>
         </motion.div>
 
-        {/* ── BENTO ROW 4: UI GALLERY SHOWCASE BENTO (Glassmorphism) ── */}
-        {caseStudy.images && caseStudy.images.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-white/70 border border-zinc-200/80 backdrop-blur-2xl rounded-3xl p-8 sm:p-10 shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
-          >
-            <div className="flex items-center justify-between mb-8 pb-6 border-b border-zinc-200/80">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-widest text-zinc-500 font-bold block mb-1">
-                  05 // INTERFACE_GALLERY
-                </span>
-                <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-zinc-900 uppercase tracking-tight">
-                  UI & Design System Preview
-                </h3>
-              </div>
-              <span className="font-mono text-xs text-[#00A86B] font-bold uppercase tracking-widest">
-                Figma Specs
+
+        {/* ── BENTO ROW 4: UI GALLERY SHOWCASE BENTO (COMING SOON) ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="bg-white/70 border border-zinc-200/80 backdrop-blur-2xl rounded-3xl p-8 sm:p-10 shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-zinc-200/80">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-[#00A86B] font-bold block mb-1">
+                05 // INTERFACE_GALLERY
               </span>
+              <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-zinc-900 uppercase tracking-tight">
+                UI & Design System Preview
+              </h3>
             </div>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#00A86B] font-mono text-[10px] uppercase tracking-widest font-bold w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00A86B] animate-pulse" />
+              Visual Assets Coming Soon
+            </span>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {caseStudy.images.map((img, idx) => (
-                <div
-                  key={idx}
-                  className={`rounded-2xl overflow-hidden border border-zinc-200/90 shadow-md group ${idx === 0 ? 'md:col-span-2' : ''
-                    }`}
-                >
-                  <div className="bg-zinc-100 relative overflow-hidden">
-                    <img
-                      src={img}
-                      alt={`${caseStudy.title} UI preview ${idx + 1}`}
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
-              ))}
+          <div className="py-12 px-6 rounded-2xl bg-zinc-50/80 border border-dashed border-zinc-300 text-center flex flex-col items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#00A86B] mb-4 shadow-sm">
+              <Sparkles className="w-6 h-6" />
             </div>
-          </motion.div>
-        )}
+            <h4 className="font-display font-bold text-lg text-zinc-900 uppercase tracking-wide mb-2">
+              Visual Mockups & UI Screenshots Coming Soon
+            </h4>
+            <p className="text-zinc-500 text-sm max-w-md font-light leading-relaxed">
+              High-resolution UI screens, Figma design system specifications, and interactive components are currently being documented and will be published soon.
+            </p>
+          </div>
+        </motion.div>
 
-        {/* ── BENTO ROW 5: RESULTS & KEY TAKEAWAY BENTO (Glassmorphism) ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

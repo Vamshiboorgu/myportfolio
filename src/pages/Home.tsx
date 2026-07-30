@@ -5,7 +5,6 @@ import { Hero } from "../components/Sections/Hero";
 import { Work } from "../components/Sections/Work";
 import { CareerAndSkills } from "../components/Sections/CareerAndSkills";
 import { GraphicDesign } from "../components/Sections/GraphicDesign";
-import { DesignEngineering } from "../components/Sections/DesignEngineering";
 import { Education } from "../components/Sections/Education";
 import { Awards } from "../components/Sections/Awards";
 import { Contact } from "../components/Sections/Contact";
@@ -21,7 +20,6 @@ export default function Home() {
         <Work />
         <CareerAndSkills />
         <GraphicDesign />
-        <DesignEngineering />
         <Education />
         <Awards />
         <Contact />

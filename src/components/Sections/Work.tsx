@@ -5,7 +5,7 @@ import { PROJECTS_LIST, Project } from "../../data/projectsData";
 import { SectionHeader } from "../Reusable/SectionHeader";
 import { TransitionLink } from "../transitions/TransitionLink";
 
-const ProjectContent = ({ project }: { project: Project; i: number }) => (
+const ProjectContent = ({ project, i }: { project: Project; i: number }) => (
   <>
     <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover/card:bg-accent/20 group-hover/card:scale-150 transition-all duration-700 pointer-events-none" />
     <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent scale-x-0 group-hover/card:scale-x-100 transition-transform duration-700 origin-left" />
@@ -13,7 +13,7 @@ const ProjectContent = ({ project }: { project: Project; i: number }) => (
     <div className="relative z-10">
       <div className="text-accent text-[10px] sm:text-xs font-mono uppercase tracking-widest mb-6 sm:mb-8 flex items-center gap-4 group-hover/card:text-white transition-colors duration-500">
         <span className="w-6 sm:w-8 h-px bg-accent/50 group-hover/card:w-16 group-hover/card:bg-white/80 transition-all duration-500" />
-        {project.number}
+        {project.number || `PROJECT ${(i + 1).toString().padStart(2, '0')}`}
       </div>
       <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6 uppercase tracking-tighter leading-tight text-white drop-shadow-sm group-hover/card:text-transparent group-hover/card:bg-clip-text group-hover/card:bg-gradient-to-r group-hover/card:from-accent group-hover/card:to-accent/50 transition-all duration-500">
         {project.title}
@@ -33,7 +33,7 @@ const ProjectContent = ({ project }: { project: Project; i: number }) => (
       </div>
 
       <div className="shrink-0 ml-3">
-        {project.caseStudySlug ? (
+        {project.caseStudySlug && !project.comingSoon ? (
           <TransitionLink
             to={`/work/${project.caseStudySlug}`}
             label={project.title}
@@ -43,7 +43,7 @@ const ProjectContent = ({ project }: { project: Project; i: number }) => (
             <ArrowUpRight className="w-4 h-4 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5 transition-transform duration-300" />
           </TransitionLink>
         ) : (
-          <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-white/30 uppercase">
+          <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-white/30 uppercase border border-white/10 px-2.5 py-1 rounded-full">
             Coming soon
           </span>
         )}

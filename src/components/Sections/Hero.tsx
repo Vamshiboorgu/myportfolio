@@ -82,14 +82,14 @@ export const Hero = () => {
       hls.loadSource(streamUrl);
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(() => {});
+        video.play().catch(() => { });
       });
       return () => {
         hls.destroy();
       };
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
       video.src = streamUrl;
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
   }, []);
 
@@ -240,10 +240,10 @@ export const Hero = () => {
 
             {/* Outer Stadium Capsule Frame */}
             <div className="relative w-full h-[460px] sm:h-[500px] rounded-[180px] sm:rounded-[200px] bg-gradient-to-b from-accent/20 via-accent/10 to-accent/5 border border-accent/30 shadow-[0_0_50px_rgba(0,229,153,0.18)] p-2 backdrop-blur-md flex items-end justify-center overflow-hidden group">
-              
+
               {/* Headshot Photo inside capsule */}
               <img
-                src="/designer_headshot.png"
+                src="/designer_headshot.jpg"
                 alt="Vamshi Boorgu - UX/UI Designer"
                 className="w-full h-full object-cover object-center rounded-[172px] sm:rounded-[192px] filter brightness-105 contrast-105 transition-transform duration-700 group-hover:scale-105"
               />

@@ -1,524 +1,294 @@
-import { motion, animate, useInView, AnimatePresence } from "motion/react";
-import { Paintbrush, Code2, RefreshCw, Search, Layout, Palette, Layers, Terminal, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-
-// CountUp number animation component
-function CountUpNumber({ end, decimals = 0, suffix = "" }: { end: number; decimals?: number; suffix?: string }) {
-  const [value, setValue] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(0, end, {
-        duration: 1.4,
-        ease: [0.16, 1, 0.3, 1],
-        onUpdate(latest) {
-          setValue(latest);
-        },
-      });
-      return () => controls.stop();
-    }
-  }, [isInView, end]);
-
-  return (
-    <span ref={ref}>
-      {decimals > 0 ? value.toFixed(decimals) : Math.floor(value)}
-      {suffix}
-    </span>
-  );
-}
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Search, Layout, Palette, Code2, Layers, CheckCircle2, ArrowRight } from "lucide-react";
+import { SectionHeader } from "../Reusable/SectionHeader";
 
 export const CareerAndSkills = () => {
-  const [activePhase, setActivePhase] = useState(0);
+  const [activeTab, setActiveTab] = useState<"ux" | "ui" | "dev">("ux");
 
-  const pipelineNodes = [
-    { name: "Research", icon: Search, type: "design" },
-    { name: "Wireframe", icon: Layout, type: "design" },
-    { name: "UI Design", icon: Palette, type: "design" },
-    { name: "Prototype", icon: Layers, type: "design" },
-    { name: "Develop", icon: Terminal, type: "build" },
-    { name: "Ship", icon: Rocket, type: "build" },
-  ];
-
-  const uxSkills = [
-    "User Research", "Usability Testing", "Information Architecture", 
-    "Wireframing", "Prototyping", "User Flows", 
-    "Persona Development", "Competitive Analysis", "Interaction Design"
-  ];
-
-  const uiSkills = [
-    "Visual Design", "Design Systems", "Responsive Design", 
-    "Typography", "Component Libraries", "Micro-interactions", 
-    "Accessibility (WCAG)", "Handoff Documentation"
-  ];
-
-  const devSkills = [
-    "React", "Angular", "React Native", 
-    "HTML5", "CSS3", "Bootstrap", 
-    "JavaScript", "TypeScript"
-  ];
-
-  const designTools = ["Figma", "FigJam", "Adobe XD", "Photoshop", "Illustrator", "Miro"];
-  const devTools = ["VS Code", "Git", "npm", "Chrome DevTools"];
-
-  const handoffPhases = [
-    {
-      id: 0,
-      title: "Design-led thinking",
-      subtitle: "Phase 01 // Research, Discovery & UX Strategy",
-      icon: Paintbrush,
-      accent: "#4ADE80",
-      description: "Every interface starts with user research, not assumptions. I conduct user interviews, map information architecture, and validate wireframes before pixel execution.",
-      tools: ["Figma", "FigJam", "Adobe XD", "Photoshop", "Illustrator", "Miro"],
-      skills: ["User Research", "Usability Testing", "Wireframing", "Information Architecture", "User Flows"],
+  const skillCategories = {
+    ux: {
+      label: "UX Strategy & Research",
+      tag: "USER-CENTERED",
+      description: "Rooted in user research and structural clarity before pixel execution.",
+      skills: [
+        "User Research & Interviews",
+        "Usability Testing & Audit",
+        "Information Architecture",
+        "Wireframing & Prototyping",
+        "User Journey Mapping",
+        "Competitive Analysis",
+      ],
+      tools: ["Figma", "FigJam", "Miro", "Adobe XD"],
     },
-    {
-      id: 1,
-      title: "Production-ready output",
-      subtitle: "Phase 02 // Frontend Engineering & Code Architecture",
-      icon: Code2,
-      accent: "#38BDF8",
-      description: "I don't just prototype — I ship real React, Angular, and React Native code. Building modular component libraries with production-grade TypeScript and responsive Tailwind CSS.",
+    ui: {
+      label: "UI & Design Systems",
+      tag: "VISUAL PRECISION",
+      description: "Crafting scalable design systems, responsive components, and micro-interactions.",
+      skills: [
+        "Visual & Interface Design",
+        "Design System Tokenization",
+        "Responsive Grid Layouts",
+        "Component Libraries",
+        "Micro-Interactions & Motion",
+        "Accessibility (WCAG 2.1)",
+      ],
+      tools: ["Figma", "Photoshop", "Illustrator", "Tokens Studio"],
+    },
+    dev: {
+      label: "Frontend Engineering",
+      tag: "PRODUCTION-READY",
+      description: "Translating Figma designs into pixel-perfect React & Angular code with zero fidelity loss.",
+      skills: [
+        "React & TypeScript",
+        "Angular & RxJS",
+        "Tailwind CSS & Utility Frameworks",
+        "HTML5 / Modern CSS Architecture",
+        "Component State Management",
+        "Git & CI/CD Deployment",
+      ],
       tools: ["VS Code", "Git", "npm", "Chrome DevTools"],
-      skills: ["React", "Angular", "React Native", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
+    },
+  };
+
+  const workflowSteps = [
+    {
+      num: "01",
+      title: "Discover & Map",
+      desc: "User interviews, persona building, and information architecture.",
+      icon: Search,
     },
     {
-      id: 2,
-      title: "Zero handoff friction",
-      subtitle: "Phase 03 // Seamless Design-to-Code Execution",
-      icon: RefreshCw,
-      accent: "#4ADE80",
-      description: "No gap between what's designed in Figma and what's deployed in code — because I own both ends of the pipeline with 100% pixel fidelity.",
-      tools: ["Figma Tokens", "Design System Specs", "Git Pipelines", "Vercel / Netlify"],
-      skills: ["Component Token Syncing", "Zero Fidelity Loss", "Pixel-Perfect Responsive UI", "Rapid Iteration"],
+      num: "02",
+      title: "Wireframe & Test",
+      desc: "Low-fidelity layouts and rapid prototype validation.",
+      icon: Layout,
+    },
+    {
+      num: "03",
+      title: "UI & System Design",
+      desc: "Hi-fi interface design, color/type tokens, and reusable components.",
+      icon: Palette,
+    },
+    {
+      num: "04",
+      title: "Build & Deploy",
+      desc: "Production-ready React & Angular implementation with 100% pixel fidelity.",
+      icon: Code2,
     },
   ];
 
   return (
-    <section id="expertise" className="py-14 sm:py-16 px-6 bg-[#0a0f0d] text-white relative overflow-hidden font-sans border-b border-[#1a2e22]">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[550px] h-[250px] bg-[#4ADE80]/5 rounded-full blur-[130px] pointer-events-none" />
+    <section id="expertise" className="py-20 md:py-32 relative bg-ink grid-lines border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
 
-      <div className="max-w-7xl mx-auto relative z-10 space-y-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12">
+          <div className="max-w-2xl">
+            <SectionHeader
+              technical="CAREER_AND_EXPERTISE"
+              title="Design &"
+              subtitle="Engineering"
+              align="left"
+              className="mb-0"
+            />
+          </div>
+          <div className="max-w-xs">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-white/60 text-xs sm:text-sm leading-relaxed font-light mb-4"
+            >
+              UX/UI Designer with 3.8+ years of hands-on experience bridging the gap between Figma design systems and production frontend code.
+            </motion.p>
+            <div className="flex items-center gap-3 text-technical text-xs opacity-60">
+              <div className="w-10 h-px bg-accent" />
+              <span>FULL PIPELINE OWNERSHIP</span>
+            </div>
+          </div>
+        </div>
 
-        {/* ── TOP INTEGRATED HEADER & ROLE & STATS (Compact Grid) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Left Block (7 Cols): About + Intro + Role Badge */}
+        {/* Top 2-Column Clean Bento Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+          {/* Left Column: About & Philosophy (7 Cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 bg-[#111916] border border-[#1a2e22] rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-md"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 bg-[#111114] border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl flex flex-col justify-between space-y-8 backdrop-blur-2xl"
           >
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse" />
-                <span className="font-mono text-[11px] text-[#4ADE80] uppercase tracking-[0.25em] font-bold">
-                  ABOUT // DESIGN ENGINEER
-                </span>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] sm:text-xs uppercase tracking-widest font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <span>DESIGN ENGINEER PHILOSOPHY</span>
               </div>
 
-              <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-tight leading-tight">
-                I design it. Then I build it.
-              </h2>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white tracking-tight leading-tight">
+                I design it in Figma. <br />
+                <span className="text-accent">Then I engineer it in code.</span>
+              </h3>
 
-              <p className="text-[#8a9a8f] text-sm sm:text-base leading-relaxed font-normal">
-                UX/UI Designer with 3.8 years of experience who doesn't hand off and walk away. I take products from user research through Figma to production-ready code in React and Angular — no translation layer, no fidelity loss.
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed font-light">
+                I don't just hand off Figma mockups and walk away. I take products from initial user research, wireframes, and design systems directly into production-ready React and Angular code — ensuring 100% pixel fidelity with zero translation loss.
               </p>
             </div>
 
-            {/* Integrated Role Badge Strip */}
-            <div className="pt-4 border-t border-[#1a2e22] flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-white">UX/UI Designer</span>
-                <span className="text-[#4ADE80] font-bold">@ iBaseit, Hyderabad</span>
+            {/* Quick Metrics Bar */}
+            <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-left">
+              <div>
+                <div className="text-2xl sm:text-3xl font-display font-extrabold text-white">3.8+</div>
+                <div className="text-[10px] sm:text-xs font-mono text-white/50 uppercase tracking-wider mt-1">Years Experience</div>
               </div>
-              <span className="text-[#8a9a8f] uppercase tracking-wider text-[11px]">Nov 2022 — Present</span>
+              <div>
+                <div className="text-2xl sm:text-3xl font-display font-extrabold text-white">10+</div>
+                <div className="text-[10px] sm:text-xs font-mono text-white/50 uppercase tracking-wider mt-1">Projects Shipped</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-display font-extrabold text-accent">100%</div>
+                <div className="text-[10px] sm:text-xs font-mono text-white/50 uppercase tracking-wider mt-1">Fidelity Rate</div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Block (5 Cols): 2x2 Compact Stats Grid */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-            {/* Stat 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-[#111916] border border-[#1a2e22] hover:border-[#4ADE80]/40 rounded-2xl p-5 shadow-xs hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="font-display font-black text-3xl sm:text-4xl text-white mb-1">
-                <CountUpNumber end={3.8} decimals={1} suffix="+" />
-              </div>
-              <div className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-widest font-semibold">
-                YEARS EXP
-              </div>
-            </motion.div>
-
-            {/* Stat 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="bg-[#111916] border border-[#1a2e22] hover:border-[#4ADE80]/40 rounded-2xl p-5 shadow-xs hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="font-display font-black text-3xl sm:text-4xl text-white mb-1">
-                <CountUpNumber end={10} suffix="+" />
-              </div>
-              <div className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-widest font-semibold">
-                PROJECTS SHIPPED
-              </div>
-            </motion.div>
-
-            {/* Stat 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-[#111916] border border-[#1a2e22] hover:border-[#4ADE80]/40 rounded-2xl p-5 shadow-xs hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="font-display font-black text-3xl sm:text-4xl text-white mb-1">
-                <CountUpNumber end={3} />
-              </div>
-              <div className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-widest font-semibold">
-                CASE STUDIES
-              </div>
-            </motion.div>
-
-            {/* Stat 4: Statement Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="bg-[#4ADE80] text-[#0a0f0d] rounded-2xl p-5 shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="font-display font-black text-xl sm:text-2xl text-[#0a0f0d] mb-1 leading-tight uppercase">
-                Figma → Code
-              </div>
-              <div className="font-mono text-[10px] text-[#0a0f0d]/80 uppercase tracking-widest font-extrabold">
-                FULL PIPELINE
-              </div>
-            </motion.div>
-          </div>
-
-        </div>
-
-        {/* ── COMPACT DESIGN-TO-CODE PIPELINE STRIP ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="bg-[#111916] border border-[#1a2e22] rounded-2xl p-5 shadow-md relative overflow-hidden space-y-4"
-        >
-          {/* Top Label Bar */}
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
-            <span className="text-[#4ADE80] font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" /> DESIGN PHASE
-            </span>
-            <span className="text-[#8a9a8f] font-bold">PIPELINE FLOW</span>
-            <span className="text-[#38BDF8] font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" /> BUILD PHASE
-            </span>
-          </div>
-
-          {/* Connected Flow Line & Nodes */}
-          <div className="relative pt-1 pb-1">
-            <div className="absolute top-[26px] left-[6%] right-[6%] h-0.5 bg-[#1a2e22] z-0 overflow-hidden">
-              <div className="w-20 h-full bg-gradient-to-r from-transparent via-[#4ADE80] to-transparent animate-pipeline-pulse" />
-            </div>
-
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 relative z-10">
-              {pipelineNodes.map((node, i) => {
-                const IconComponent = node.icon;
-                const isDesign = node.type === "design";
-                return (
-                  <div key={node.name} className="flex flex-col items-center text-center space-y-1.5 group">
-                    <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center border backdrop-blur-md transition-all duration-300 group-hover:scale-110 ${
-                        isDesign
-                          ? "bg-[#111916] border-[#4ADE80]/40 text-[#4ADE80] group-hover:border-[#4ADE80]"
-                          : "bg-[#111916] border-[#38BDF8]/40 text-[#38BDF8] group-hover:border-[#38BDF8]"
-                      }`}
-                    >
-                      <IconComponent className="w-4 h-4" />
-                    </div>
-                    <span className="font-mono text-[11px] font-bold text-white tracking-wider">
-                      {node.name}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ── BENTO GRID SKILLS (High Density Layout) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-          
-          {/* Left Column (7 Cols) — UX PROCESS */}
+          {/* Right Column: Tabbed Skill Inspection Card (5 Cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-7 bg-[#111916] border-y border-r border-[#1a2e22] border-l-[3px] border-l-[#4ADE80] rounded-2xl p-5 sm:p-6 shadow-xs hover:border-y-[#4ADE80]/40 hover:border-r-[#4ADE80]/40 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between space-y-4"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-5 bg-[#111114] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6 backdrop-blur-2xl"
           >
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-mono text-xs uppercase tracking-widest text-[#4ADE80] font-bold">
-                  UX PROCESS
-                </span>
-                <span className="w-6 h-px bg-[#1a2e22]" />
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {uxSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 text-xs font-mono bg-[#0a0f0d] border border-[#1a2e22] text-[#8a9a8f] font-medium rounded-lg hover:border-[#4ADE80] hover:text-[#4ADE80] hover:scale-[1.02] transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-wider pt-2 border-t border-[#1a2e22]">
-              User Research & Information Architecture
-            </div>
-          </motion.div>
-
-          {/* Right Column Stack (5 Cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            
-            {/* Top Right — UI DESIGN */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-[#111916] border border-[#1a2e22] hover:border-[#4ADE80]/40 rounded-2xl p-5 shadow-xs hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-mono text-xs uppercase tracking-widest text-white font-bold">
-                  UI DESIGN
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {uiSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 py-1 text-[11px] font-mono bg-[#0a0f0d] border border-[#1a2e22] text-[#8a9a8f] font-medium rounded-md hover:border-[#4ADE80] hover:text-[#4ADE80] transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Bottom Right — DEVELOPMENT */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="bg-[#111916] border-y border-r border-[#1a2e22] border-l-[3px] border-l-[#38BDF8] rounded-2xl p-5 shadow-xs hover:border-y-[#38BDF8]/40 hover:border-r-[#38BDF8]/40 hover:-translate-y-0.5 transition-all duration-300 space-y-2"
-            >
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs uppercase tracking-widest text-[#38BDF8] font-bold">
-                  DEVELOPMENT
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {devSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 py-1 text-[11px] font-mono bg-[#0a0f0d] border border-[#1a2e22] text-[#8a9a8f] font-medium rounded-md hover:border-[#38BDF8] hover:text-[#38BDF8] transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-              <p className="text-[#8a9a8f] text-[11px] font-mono pt-2 border-t border-[#1a2e22]">
-                "Figma to production-ready React & Angular applications."
-              </p>
-            </motion.div>
-
-          </div>
-
-          {/* Full Width Compact Card — TOOLKIT */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-12 bg-[#111916] border border-[#1a2e22] rounded-2xl p-4 sm:p-5 shadow-xs"
-          >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-              <span className="font-mono text-xs uppercase tracking-widest text-white font-bold shrink-0">
-                TOOLKIT:
-              </span>
-
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-[#8a9a8f]">
-                {designTools.map((t) => (
-                  <div key={t} className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
-                    <span className="text-white/90">{t}</span>
-                  </div>
-                ))}
-                <span className="text-[#1a2e22] hidden md:inline">|</span>
-                {devTools.map((t) => (
-                  <div key={t} className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
-                    <span className="text-white/90">{t}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* ── SECTION 6: INTERACTIVE DESIGN-TO-DEV HANDOFF PROCESS ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="space-y-4 pt-2"
-        >
-          {/* Header Bar */}
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-xs text-[#4ADE80] uppercase tracking-widest font-bold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#4ADE80] animate-ping" />
-              INTERACTIVE DESIGN-TO-DEV HANDOFF PROCESS
-            </span>
-            <span className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-widest hidden sm:inline">
-              Click Heading to Inspect Stage Tools
-            </span>
-          </div>
-
-          {/* 3 Interactive Process Headings (Tabs) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {handoffPhases.map((phase, idx) => {
-              const IconComp = phase.icon;
-              const isActive = activePhase === idx;
-              return (
+            {/* Category Selector Tabs */}
+            <div className="flex items-center gap-1.5 p-1 bg-white/5 border border-white/10 rounded-2xl">
+              {(["ux", "ui", "dev"] as const).map((key) => (
                 <button
-                  key={phase.title}
-                  onClick={() => setActivePhase(idx)}
-                  className={`text-left rounded-2xl p-5 transition-all duration-300 border flex flex-col justify-between group cursor-pointer ${
-                    isActive
-                      ? "bg-[#111916] border-[#4ADE80] shadow-[0_0_25px_rgba(74,222,128,0.15)] -translate-y-1"
-                      : "bg-[#111916]/80 border-[#1a2e22] hover:border-[#1a2e22]/80 hover:bg-[#111916]"
+                  key={key}
+                  onClick={() => setActiveTab(key)}
+                  className={`flex-1 py-2 rounded-xl font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                    activeTab === key
+                      ? "bg-accent text-ink shadow-md"
+                      : "text-white/60 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all ${
-                        isActive
-                          ? "bg-[#4ADE80]/15 border-[#4ADE80] text-[#4ADE80]"
-                          : "bg-[#0a0f0d] border-[#1a2e22] text-[#8a9a8f] group-hover:text-white"
-                      }`}
-                    >
-                      <IconComp className="w-4 h-4" />
-                    </div>
+                  {key === "ux" ? "UX Strategy" : key === "ui" ? "UI Systems" : "Frontend"}
+                </button>
+              ))}
+            </div>
 
-                    <span
-                      className={`font-mono text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
-                        isActive
-                          ? "bg-[#4ADE80] text-[#0a0f0d]"
-                          : "bg-[#0a0f0d] text-[#8a9a8f] border border-[#1a2e22]"
-                      }`}
-                    >
-                      STEP 0{idx + 1}
+            {/* Tab Content Display */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-5"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="text-lg font-display font-bold text-white">
+                      {skillCategories[activeTab].label}
+                    </h4>
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full font-bold">
+                      {skillCategories[activeTab].tag}
                     </span>
                   </div>
-
-                  <h4 className={`font-display font-bold text-base transition-colors ${isActive ? "text-white" : "text-white/80"}`}>
-                    {phase.title}
-                  </h4>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Dynamic Active Phase Tools & Skill Inspection Drawer */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activePhase}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#111916] border border-[#4ADE80]/40 rounded-2xl p-6 shadow-xl space-y-5"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1a2e22] pb-4">
-                <div>
-                  <span className="font-mono text-[10px] text-[#4ADE80] uppercase tracking-widest font-bold block mb-1">
-                    {handoffPhases[activePhase].subtitle}
-                  </span>
-                  <h4 className="font-display font-extrabold text-xl text-white">
-                    {handoffPhases[activePhase].title}
-                  </h4>
+                  <p className="text-xs text-white/50 font-light">
+                    {skillCategories[activeTab].description}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 font-mono text-xs text-[#8a9a8f]">
-                  <span>Active Workflow State</span>
-                  <ArrowRight className="w-4 h-4 text-[#4ADE80]" />
+
+                {/* Skill List */}
+                <div className="space-y-2">
+                  {skillCategories[activeTab].skills.map((skill) => (
+                    <div key={skill} className="flex items-center gap-2.5 text-xs text-white/80 font-mono">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
+                      <span>{skill}</span>
+                    </div>
+                  ))}
                 </div>
-              </div>
 
-              <p className="text-white/90 text-sm leading-relaxed font-normal">
-                {handoffPhases[activePhase].description}
-              </p>
-
-              {/* Tools & Skills Grid for Active Stage */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                {/* Active Tools */}
-                <div>
-                  <span className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-widest font-bold block mb-2.5">
-                    STAGE TOOLS:
+                {/* Tools Strip */}
+                <div className="pt-4 border-t border-white/10">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 block mb-2 font-bold">
+                    Primary Tools & Stack:
                   </span>
-                  <div className="flex flex-wrap gap-2">
-                    {handoffPhases[activePhase].tools.map((tool) => (
+                  <div className="flex flex-wrap gap-1.5">
+                    {skillCategories[activeTab].tools.map((tool) => (
                       <span
                         key={tool}
-                        className="px-3 py-1 font-mono text-xs bg-[#0a0f0d] border border-[#4ADE80]/40 text-[#4ADE80] font-bold rounded-lg shadow-xs flex items-center gap-1.5"
+                        className="px-2.5 py-1 text-[10px] font-mono bg-white/5 border border-white/10 text-white/80 rounded-lg font-medium"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
                         {tool}
                       </span>
                     ))}
                   </div>
                 </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
 
-                {/* Active Skills */}
-                <div>
-                  <span className="font-mono text-[10px] text-[#8a9a8f] uppercase tracking-widest font-bold block mb-2.5">
-                    DELIVERABLE SKILLS:
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {handoffPhases[activePhase].skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 font-mono text-xs bg-[#0a0f0d] border border-[#1a2e22] text-white/90 font-medium rounded-lg"
-                      >
-                        {skill}
+        </div>
+
+        {/* Bottom Horizontal Pipeline Flow (Sleek & Clean) */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-[#111114] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl backdrop-blur-2xl space-y-6"
+        >
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-accent flex items-center gap-2">
+              <Layers className="w-4 h-4" />
+              <span>End-to-End Design-to-Dev Pipeline</span>
+            </span>
+            <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest hidden sm:inline">
+              Figma → Production Code
+            </span>
+          </div>
+
+          {/* 4 Clean Steps Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {workflowSteps.map((step, idx) => {
+              const IconComp = step.icon;
+              return (
+                <div
+                  key={step.num}
+                  className="bg-white/5 border border-white/10 hover:border-accent/40 rounded-2xl p-5 transition-all duration-300 flex flex-col justify-between group"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-black font-display text-accent opacity-80 group-hover:opacity-100">
+                        {step.num}
                       </span>
-                    ))}
+                      <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 group-hover:text-accent group-hover:border-accent/30 transition-all">
+                        <IconComp className="w-4 h-4" />
+                      </div>
+                    </div>
+                    <h5 className="font-display font-bold text-base text-white">
+                      {step.title}
+                    </h5>
+                    <p className="text-xs text-white/60 font-light leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
 
+                  {idx < workflowSteps.length - 1 && (
+                    <div className="hidden lg:flex items-center gap-1 text-white/20 pt-4 mt-2 font-mono text-[10px]">
+                      <span>Next step</span>
+                      <ArrowRight className="w-3 h-3 text-accent/50" />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
 
       </div>
