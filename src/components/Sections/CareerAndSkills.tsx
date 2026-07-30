@@ -4,7 +4,7 @@ import { Search, Layout, Palette, Code2, Layers, CheckCircle2, ArrowRight } from
 import { SectionHeader } from "../Reusable/SectionHeader";
 
 export const CareerAndSkills = () => {
-  const [activeTab, setActiveTab] = useState<"ux" | "ui" | "dev">("ux");
+  const [activeTab, setActiveTab] = useState<"ux" | "ui" | "dev" | "media">("ux");
 
   const skillCategories = {
     ux: {
@@ -48,6 +48,20 @@ export const CareerAndSkills = () => {
         "Git & CI/CD Deployment",
       ],
       tools: ["VS Code", "Git", "npm", "Chrome DevTools"],
+    },
+    media: {
+      label: "WordPress & Video Editing",
+      tag: "CMS & MULTIMEDIA",
+      description: "Building custom responsive WordPress websites and producing high-impact video content.",
+      skills: [
+        "WordPress Site Design & CMS",
+        "Video Editing & Motion Graphics",
+        "Promo & Product Showcase Videos",
+        "Elementor & Gutenberg Builder",
+        "Post-Production & Color Grading",
+        "Visual Storytelling & Motion Design",
+      ],
+      tools: ["WordPress", "Filmora", "Canva", "Elementor"],
     },
   };
 
@@ -163,18 +177,17 @@ export const CareerAndSkills = () => {
             className="lg:col-span-5 bg-[#111114] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6 backdrop-blur-2xl"
           >
             {/* Category Selector Tabs */}
-            <div className="flex items-center gap-1.5 p-1 bg-white/5 border border-white/10 rounded-2xl">
-              {(["ux", "ui", "dev"] as const).map((key) => (
+            <div className="grid grid-cols-2 gap-1.5 p-1.5 bg-white/5 border border-white/10 rounded-2xl">
+              {(["ux", "ui", "dev", "media"] as const).map((key) => (
                 <button
                   key={key}
                   onClick={() => setActiveTab(key)}
-                  className={`flex-1 py-2 rounded-xl font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
-                    activeTab === key
+                  className={`py-2 px-3 rounded-xl font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap text-center ${activeTab === key
                       ? "bg-accent text-ink shadow-md"
                       : "text-white/60 hover:text-white hover:bg-white/5"
-                  }`}
+                    }`}
                 >
-                  {key === "ux" ? "UX Strategy" : key === "ui" ? "UI Systems" : "Frontend"}
+                  {key === "ux" ? "UX Strategy" : key === "ui" ? "UI Systems" : key === "dev" ? "Frontend" : "WordPress & Video"}
                 </button>
               ))}
             </div>
@@ -215,18 +228,31 @@ export const CareerAndSkills = () => {
 
                 {/* Tools Strip */}
                 <div className="pt-4 border-t border-white/10">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 block mb-2 font-bold">
-                    Primary Tools & Stack:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {skillCategories[activeTab].tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="px-2.5 py-1 text-[10px] font-mono bg-white/5 border border-white/10 text-white/80 rounded-lg font-medium"
-                      >
-                        {tool}
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 font-bold">
+                      Primary Tools & Stack:
+                    </span>
+                    {activeTab === "media" && (
+                      <span className="text-[9px] font-mono uppercase tracking-wider text-accent font-bold bg-accent/10 px-2 py-0.5 rounded-full border border-accent/20">
+                        Featured Stack
                       </span>
-                    ))}
+                    )}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skillCategories[activeTab].tools.map((tool) => {
+                      const isSpecialTool = ["wordpress", "filmora", "canva", "effects", "elementor"].some(t => tool.toLowerCase().includes(t));
+                      return (
+                        <span
+                          key={tool}
+                          className={`px-2.5 py-1 text-[10px] sm:text-xs font-mono rounded-lg font-medium transition-all duration-300 ${isSpecialTool
+                              ? "bg-accent/20 border border-accent/50 text-accent font-bold shadow-[0_0_10px_rgba(0,229,153,0.15)]"
+                              : "bg-white/5 border border-white/10 text-white/80"
+                            }`}
+                        >
+                          {tool}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>

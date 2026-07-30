@@ -31,13 +31,14 @@ export const PORTFOLIO_DATA = {
     tools: [
       "Figma (Primary)",
       "Adobe XD",
+      "WordPress",
       "Photoshop",
       "Illustrator",
+      "Filmora (Video Editing)",
+      "Canva",
       "FigJam",
-      "Miro",
-      "Maze / Hotjar"
     ],
-    frontEndNote: "Basic front-end: HTML/CSS, React"
+    frontEndNote: "Basic front-end & CMS: HTML/CSS, React, WordPress, Video Editing"
   },
   projects: [
     {

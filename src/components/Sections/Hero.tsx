@@ -98,6 +98,8 @@ export const Hero = () => {
     "USER RESEARCH",
     "PROTOTYPING",
     "DESIGN SYSTEMS",
+    "WORDPRESS DEVELOPMENT",
+    "VIDEO EDITING",
     "INTERACTION DESIGN",
     "USABILITY TESTING",
   ];
@@ -233,7 +235,7 @@ export const Hero = () => {
             {/* Ultra-Sleek Glassmorphic Floating Pills Around Portrait */}
             <FloatingDesignPill label="Product Design" tag="CORE" className="-top-3 -left-4 sm:-left-8" delay={0.4} />
             <FloatingDesignPill label="User Experience" tag="UI/UX" className="top-16 -right-4 sm:-right-8" delay={0.6} showCursor={true} />
-            <FloatingDesignPill label="Design Systems" tag="SCALABLE" className="bottom-14 -left-6 sm:-left-10" delay={0.8} />
+            <FloatingDesignPill label="WordPress & Video" tag="CMS & MEDIA" className="bottom-14 -left-6 sm:-left-10" delay={0.8} />
 
             {/* Soft Ambient Background Glow */}
             <div className="absolute inset-0 bg-accent/20 rounded-[180px] blur-[60px] pointer-events-none" />
